@@ -1,10 +1,10 @@
-- name: Docs
+- name: Документация
   href: docs/
   homepage: docs/index.md
 - name: API
   href: api/
   homepage: api/index.md
-- name: Community
+- name: Комьюнити
   href: community.md
-- name: Blog
+- name: Блог Blazor
   href: https://blogs.msdn.microsoft.com/webdev/category/blazor/

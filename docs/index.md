@@ -11,68 +11,68 @@ ms.technology: aspnet
 ms.topic: article
 uid: client-side/blazor/index
 ---
-# Blazor preview documentation
+# Предварительная документация Blazor
 
 [!INCLUDE[](~/includes/blazor-preview-notice.md)]
 
-Blazor is a new experimental .NET web framework using C#/Razor and HTML that runs in the browser with WebAssembly.
+Blazor - это экспериментальный .NET веб фреймворк использующий C#/Razor и HTML который работает в браузере используя WebAssembly
 
-## Get started
+## Начать
 
-[Get started with Blazor](xref:client-side/blazor/get-started)
+[Начать с Blazor](xref:client-side/blazor/get-started)
 
-## Explore Blazor preview documentation
+## Изучите предварительную документацию Blazor
 
-[Build your first Blazor app](xref:client-side/blazor/tutorials/first-app)  
-Build a Blazor app step-by-step and quickly learn the basic features of the Blazor framework.
+[Создайте свое первое приложение Blazor](xref:client-side/blazor/tutorials/first-app)  
+Постройте приложение Blazor шаг за шагом и быстро изучите основные функции Blazor-фреймворка.
 
-[Frequently asked questions (FAQ)](xref:client-side/blazor/introduction/faq)  
-Find the answers to frequently asked questions about Blazor.
+[Часто задаваемые вопросы (FAQ)](xref:client-side/blazor/introduction/faq)  
+Найдите ответы на часто задаваемые вопросы о Blazor.
 
-[Introduction to Blazor](xref:client-side/blazor/introduction/index)  
-Discover how Blazor runs in the browser to execute C#/Razor code with WebAssembly and the .NET runtime.
+[Введение в Blazor](xref:client-side/blazor/introduction/index)  
+Узнайте, как Blazor запускается в браузере для выполнения кода C#/Razor с помощью WebAssembly и среды выполнения .NET.
 
-[Components](xref:client-side/blazor/components/index)  
-Create and use Blazor components, the fundamental building blocks of Blazor apps provided by compiled Razor or C# files.
+[Компоненты](xref:client-side/blazor/components/index)  
+Создавайте и используйте компоненты Blazor, основные строительные блоки приложений Blazor, предоставляемые скомпилированными файлами Razor или C#.
 
-[Layouts](xref:client-side/blazor/layouts)  
-Learn how to create reusable layout components for Blazor apps.
+[Макеты](xref:client-side/blazor/layouts)  
+Узнайте, как создавать многоразовые компоненты компоновки для приложений Blazor.
 
-[Dependency injection](xref:client-side/blazor/dependency-injection)  
-See how Blazor apps can use built-in services by having them injected into components.
+[Внедрение зависимости](xref:client-side/blazor/dependency-injection)  
+Посмотрите, как приложения Blazor могут использовать встроенные сервисы, введя их в состав компонентов.
 
-[Routing](xref:client-side/blazor/routing)  
-Learn how to route requests in a client-side Blazor app and about the NavLink component.
+[Маршрутизация](xref:client-side/blazor/routing)  
+Узнайте, как маршрутизировать запросы в клиентском приложении Blazor и о компоненте NavLink.
 
-[JavaScript interop](xref:client-side/blazor/javascript-interop)  
-Learn how to invoke JavaScript functions from .NET and .NET methods from JavaScript.
+[JavaScript-взаимодействие](xref:client-side/blazor/javascript-interop)  
+Узнайте, как вызывать функции JavaScript из .NET и .NET методы из JavaScript.
 
-[Host and deploy](xref:client-side/blazor/host-and-deploy/index)  
-Discover how to host and deploy Blazor apps using hosted and standalone deployment models.
+[Хостинг и развертывание](xref:client-side/blazor/host-and-deploy/index)  
+Узнайте, как размещать и развертывать приложения Blazor с использованием моделей размещения и автономного развертывания.
 
-## Additional resources
+## Дополнительные ресурсы
 
 * [WebAssembly](http://webassembly.org/)
-* [C# Guide](https://docs.microsoft.com/dotnet/csharp/)
+* [Руководство C#](https://docs.microsoft.com/dotnet/csharp/)
 * [Razor](https://docs.microsoft.com/aspnet/core/mvc/views/razor)
 * [HTML](https://www.w3.org/html/)
 
-## Suggest a feature or file a bug report
+## Предложить функцию или файл с сообщением об ошибке
 
-To make suggestions and file bug reports, please [open an issue](https://github.com/aspnet/Blazor/issues/new). For general help and to get answers from the community, join the conversation on [Gitter](https://gitter.im/aspnet/Blazor).
+Чтобы создавать предложения и отчеты об ошибках файлов, пожалуйста, [откройте вопрос](https://github.com/aspnet/Blazor/issues/new).Для получения общей помощи и получения ответов от сообщества, присоединитесь к разговору на [Gitter](https://gitter.im/aspnet/Blazor).
 
-## Contribute to the Blazor documentation
+## Внести вклад в документацию Blazor
 
-Blazor preview documentation is provided to assist you in trying out Blazor. We need your help to improve the documentation. For instructions, see [Contributing to the Blazor documentation](https://github.com/aspnet/Blazor.Docs/blob/master/CONTRIBUTING.md).
+Предварительная документация Blazor предоставляется, чтобы помочь вам попробовать Blazor. Нам нужна ваша помощь для улучшения документации. Инструкции смотрите в разделе  [Внесение вклада в документацию Blazor](https://github.com/aspnet/Blazor.Docs/blob/master/CONTRIBUTING.md).
 
-## Blazor release notes
+## Примечания к выпуску Blazor
 
-* [Release notes (0.4.0)](https://github.com/aspnet/Blazor/releases/tag/0.4.0)
-* [Release notes (0.3.0)](https://github.com/aspnet/Blazor/releases/tag/0.3.0)
-* [Release notes (0.2.0)](https://github.com/aspnet/Blazor/releases/tag/0.2.0)
-* [Release notes (0.1.0)](https://github.com/aspnet/Blazor/releases/tag/0.1.0)
+* [Примечания к выпуску (0.4.0)](https://github.com/aspnet/Blazor/releases/tag/0.4.0)
+* [Примечания к выпуску (0.3.0)](https://github.com/aspnet/Blazor/releases/tag/0.3.0)
+* [Примечания к выпуску (0.2.0)](https://github.com/aspnet/Blazor/releases/tag/0.2.0)
+* [Примечания к выпуску (0.1.0)](https://github.com/aspnet/Blazor/releases/tag/0.1.0)
 
-## View and download samples
+## Просмотр и загрузка примеров
 
 Several topics show source code and samples that are available to view or download from GitHub. To view a sample, follow the sample link. To download the code, follow these instructions:
 

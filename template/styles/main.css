@@ -69,9 +69,10 @@ svg:hover path {
 }
 
 .hero {
-  height: 350px;
+  height: auto;
   margin-top: 50px;
   padding-top: 50px;
+  padding-bottom: 10px;
   font-weight: 300;
   text-align: center;
 }
@@ -218,3 +219,5 @@ svg:hover path {
 .cr-orange    { background-color: #e82; }
 .cr-yellow    { background-color: #ec0; }
 
+a.honeydew{color:honeydew;}
+a.honeydew:hover{color:black;}

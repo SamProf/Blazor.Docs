@@ -1,6 +1,6 @@
 ---
-title: Welcome to the Blazor preview docs website!
-description: Learn about Blazor, an experimental .NET web framework using C#/Razor and HTML that runs in the browser with WebAssembly.
+title: Добро пожаловать на сайт документации Blazor на русском языке!
+description: Узнайте о Blazor, экспериментальной платформе .NET с использованием C#/Razor и HTML, которая работает в браузере с помощью WebAssembly.
 documentType: index
 ---
 
@@ -10,10 +10,14 @@ documentType: index
       <strong>Blazor</strong>
     </h1>
     <div class="minitext">
-        Full-stack web development with C# and WebAssembly
+        Full stack веб-разработка используя C# and WebAssembly
     </div>
     <div class="buttons-unit">
-      <a href="/docs/get-started.html" class="button"><i class="glyphicon glyphicon-send"></i>Get Started</a>
+      <a href="/docs/get-started.html" class="button"><i class="glyphicon glyphicon-send"></i>Начать</a>
+    </div>
+    <div class="minitext">
+        <br />
+        Основано на материалах <a href="http://Blazor.net" target="_blank" class="honeydew">Blazor.net</a>. Репозиторий официальной документации можно увидеть <a href="https://github.com/aspnet/Blazor.Docs" class="honeydew" target="_blank">здесь</a>
     </div>
   </div>
 </div>
@@ -23,9 +27,9 @@ documentType: index
       <div class="col-md-10 col-md-offset-1">
         <i class="glyphicon glyphicon-wrench"></i>
         <section>
-          <h2>Build a Web UI with C#</h2>
-          <p class="lead">Blazor is an experimental .NET web framework using C# and HTML that runs in the browser.</p>
-          <div class="lead"><a href="/docs/introduction/faq.html">What is Blazor?</a></div>
+          <h2>Создайте веб-интерфейсы с помощью C#</h2>
+          <p class="lead">Blazor - это экспериментальная платформа .NET с использованием C# и HTML, которая работает в браузере.</p>
+          <div class="lead"><a href="/docs/introduction/faq.html">Что такое Blazor?</a></div>
         </section>
       </div>
     </div>
@@ -37,8 +41,8 @@ documentType: index
       <div class="col-md-10 col-md-offset-1">
         <section>
           <h2>Full-stack .NET</h2>
-          <p class="lead">Do full-stack .NET development using stable and consistent tools, languages, and APIs both in the browser and on the server.</p>
-          <div class="lead"><a href="https://www.microsoft.com/net">Learn more about the .NET platform</a></div>
+          <p class="lead">Full-stack .NET разработка с использованием стабильных и совместимых инструментов, языков и API как в браузере, так и на сервере.</p>
+          <div class="lead"><a href="https://www.microsoft.com/net">Узнайте больше о платформе .NET</a></div>
         </section>
         <i class="glyphicon glyphicon-tasks"></i>
       </div>
@@ -51,9 +55,9 @@ documentType: index
       <div class="col-md-10 col-md-offset-1">
         <i class="glyphicon glyphicon-globe"></i>
         <section>
-          <h2>Runs in all browsers and implements .NET Standard</h2>
-          <p class="lead">Blazor runs in all browsers on the real .NET runtime with full support for .NET Standard. Blazor requires no plugins and no code transpilation, only open web standards.</p>
-          <div class="lead"><a href="/docs/introduction/index.html">How Blazor works</a></div>
+          <h2>Работает во всех браузерах и реализует .NET Standard</h2>
+          <p class="lead">Blazor запускается во всех браузерах c реальной средой выполнения .NET  с полной поддержкой .NET Standard. Blazor не требует плагинов и не транслирует код, используются только открытые веб-стандарты.</p>
+          <div class="lead"><a href="/docs/introduction/index.html">Как работает Blazor</a></div>
         </section>
       </div>
     </div>
@@ -64,8 +68,10 @@ documentType: index
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
         <section>
-          <h2>Native performance with WebAssembly</h2>
-          <p class="lead">Blazor runs on WebAssembly, giving you native performance in the browser and a trusted security sandbox.</p>
+          <h2>Нативная производительность с WebAssembly</h2>
+          <p class="lead">
+          Blazor запускается на WebAssembly, предоставляя вам нативную производительность в браузере и надежную изолированную программную среду.
+          </p>
         </section>
         <i class="glyphicon glyphicon-fire"></i>
       </div>
@@ -78,8 +84,8 @@ documentType: index
       <div class="col-md-10 col-md-offset-1">
         <i class="glyphicon glyphicon-transfer"></i>
         <section>
-          <h2>Native browser apps</h2>
-          <p class="lead">Easily interact with your existing JavaScript code, your favorite libraries, and any browser API through JavaScript interop.</p>
+          <h2>Нативные приложения для браузера</h2>
+          <p class="lead">Легкое взаимодействие с существующим кодом JavaScript, вашими любимыми библиотеками и любым API-интерфейсом браузера через интерфейс JavaScript.</p>
         </section>
       </div>
     </div>
@@ -90,8 +96,9 @@ documentType: index
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
         <section>
-          <h2>Simple and productive</h2>
-          <p class="lead">Get started fast and remain productive with project templates, great tooling, and reusable components.</p>
+          <h2>Простота и продуктивность</h2>
+          <p class="lead">
+          Быстро начните работать и продолжайте использовать шаблоны проектов, отличный инструменты и повторно используемые компоненты.</p>
         </section>
         <i class="glyphicon glyphicon-console"></i>
       </div>
@@ -104,9 +111,9 @@ documentType: index
       <div class="col-md-10 col-md-offset-1">
         <i class="glyphicon glyphicon-user"></i>
         <section>
-          <h2>Get involved</h2>
-          <p class="lead">Join the community that's building Blazor, writing documentation, building samples, and more!</p>
-          <div class="lead"><a href="community.md">Community</a></div>
+          <h2>Присоединяйтесь</h2>
+          <p class="lead">Присоединяйтесь к сообществу, которое строит Blazor, пишете документацию, примеры использования и многое другое!</p>
+          <div class="lead"><a href="community.md">Сообщество</a></div>
         </section>
       </div>
     </div>
@@ -117,9 +124,9 @@ documentType: index
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
         <section>
-          <h2>Open-source & free </h2>
-          <p class="lead">Blazor is part of the open-source .NET platform that has a strong community of over 25,000 contributors from over 1,700 companies.</p>
-          <div class="lead"><a href="https://github.com/aspnet/blazor">Blazor on GitHub</a></div>
+          <h2>Открытый исходный код</h2>
+          <p class="lead">Blazor является частью платформы .NET с открытым исходным кодом, которая имеет сильное сообщество из более чем 25 000 участников из более чем 1700 компаний.</p>
+          <div class="lead"><a href="https://github.com/aspnet/blazor">Blazor на GitHub</a></div>
         </section>
         <i class="glyphicon glyphicon-road"></i>
       </div>
@@ -130,7 +137,7 @@ documentType: index
   <div class="container">
     <div class="row">
       <div class="buttons-unit" style="padding-bottom:50px">
-        <a href="/docs/get-started.html" class="btn btn-primary" style="font-size:2em;display:inline;padding:15px"><i class="glyphicon glyphicon-send" style="font-size:1em;padding:0 20px 0 0"></i>Get Started</a>
+        <a href="/docs/get-started.html" class="btn btn-primary" style="font-size:2em;display:inline;padding:15px"><i class="glyphicon glyphicon-send" style="font-size:1em;padding:0 20px 0 0"></i>Начать</a>
       </div>
     </div>
   </div>

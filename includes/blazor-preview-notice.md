@@ -1,2 +1,2 @@
 > [!NOTE]
-> Blazor is an unsupported experimental web framework that shouldn't be used for production workloads at this time.
+> Blazor - это неподдерживаемый экспериментальный веб-фреймворк, который в настоящее время не должен использоваться в production проектах.

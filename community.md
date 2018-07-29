@@ -1,8 +1,8 @@
-# Blazor community resources
+# Blazor - ресурсы комьюнити
 
 [!INCLUDE[](~/includes/blazor-preview-notice.md)]
 
-Below is a list of projects and resources from the Blazor community (links in each section are alphabetical). If you know about another Blazor related project that isn't listed here, please let us know and we'd be happy to add it to the list.
+Ниже приведен список проектов и ресурсов сообщества Blazor (ссылки в каждом разделе по алфавиту). Если вы знаете о другом проекте Blazor, который не указан здесь, сообщите нам об этом, и мы будем рады добавить его в список.
 
 ## State management
 
@@ -11,13 +11,13 @@ Below is a list of projects and resources from the Blazor community (links in ea
 * [Blazor Redux](https://github.com/torhovland/blazor-redux)
 * [Blazor-State](https://timewarpengineering.github.io/blazor-state/)
 
-## Community documentation
+## Документация комьюнити
 
 * [Awesome Blazor](https://github.com/AdrienTorris/awesome-blazor) &ndash; A collection of useful Blazor resources.
 * [Blazor Bites](https://codedaze.io/tag/blazor-bites/)
 * [Learn Blazor](https://learn-blazor.com/)
 
-## Samples
+## Примеры
 
 * [ASP.NET Core Blazor Master/Detail CRUD with Filtering and Sorting using EF](https://code.msdn.microsoft.com/vstudio/ASPNET-Core-Blazor-122b108a)
 * [Blazor Bricks](https://www.codeproject.com/Articles/1241210/WebAssembly-with-Blazor)
@@ -31,11 +31,11 @@ Below is a list of projects and resources from the Blazor community (links in ea
 * [Blazor + Sitecore - Dynamic pages and routes](https://github.com/GoranHalvarsson/SitecoreBlazor)
 * [Toss](https://github.com/RemiBou/Toss.Blazor)
 
-## Tooling
+## Инструменты
 
 * [Razor+ Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=austincummings.razor-plus)
 
-## Libraries
+## Библиотеки
 
 * [BlazorBits](http://blazorbits.net) ([GitHub repo](https://github.com/blazorbits)) &ndash; Components including [Monaco editor](https://github.com/Microsoft/monaco-editor).
 * [BlazorComponents (ChartJS Interop)](https://github.com/muqeet-khan/BlazorComponents)
@@ -51,6 +51,6 @@ Below is a list of projects and resources from the Blazor community (links in ea
 * [Blazor.Xamarin](https://github.com/Daddoon/Blazor.Xamarin) &ndash; Host Blazor apps as standalone hybrid mobile apps with Xamarin.
 * [Sotsera.Blazor.Toaster](https://github.com/sotsera/sotsera.blazor.toaster) &ndash; A Blazor port of [Toastr.js](https://github.com/CodeSeven/toastr/). ([Demo](https://sotsera.github.io/sotsera.blazor.toaster/))
 
-## Other
+## Другие
 
 * [Trail: Blazor rendering with F#](https://github.com/panesofglass/trail)

@@ -11,7 +11,7 @@ ms.technology: aspnet
 ms.topic: article
 uid: client-side/blazor/routing
 ---
-# Blazor routing
+# Маршрутизация в Blazor
 
 By [Luke Latham](https://github.com/guardrex)
 
