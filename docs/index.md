@@ -1,5 +1,5 @@
 ---
-title: Blazor preview documentation
+title: Предварительная документация Blazor
 author: guardrex
 description: Explore Blazor, a new experimental .NET web framework using C#/Razor and HTML that runs in the browser with WebAssembly.
 manager: wpickett
@@ -17,9 +17,9 @@ uid: client-side/blazor/index
 
 Blazor - это экспериментальный .NET веб фреймворк использующий C#/Razor и HTML который работает в браузере используя WebAssembly
 
-## Начать
+## Начало работы с Blazor
 
-[Начать с Blazor](xref:client-side/blazor/get-started)
+[Начало работы с Blazor](xref:client-side/blazor/get-started)
 
 ## Изучите предварительную документацию Blazor
 

@@ -1,5 +1,5 @@
 ---
-title: Get started with Blazor
+title: Начало работы с Blazor
 author: danroth27
 description: Learn how to get started with the Blazor framework.
 manager: wpickett
@@ -11,27 +11,27 @@ ms.technology: aspnet
 ms.topic: article
 uid: client-side/blazor/get-started
 ---
-# Get started with Blazor
+# Начало работы с Blazor
 
 [!INCLUDE[](~/includes/blazor-preview-notice.md)]
 
-## Setup
+## Установка
 
-1. Install the [.NET Core 2.1 SDK](https://go.microsoft.com/fwlink/?linkid=873092) (2.1.300 or later).
-1. Install [Visual Studio 2017](https://go.microsoft.com/fwlink/?linkid=873093) (15.7 or later) with the *ASP.NET and web development* workload selected.
-1. Install the latest [Blazor Language Services extension](https://go.microsoft.com/fwlink/?linkid=870389) from the Visual Studio Marketplace.
+1. Установите [.NET Core 2.1 SDK](https://go.microsoft.com/fwlink/?linkid=873092) (2.1.300 или новее).
+1. Установите [Visual Studio 2017](https://go.microsoft.com/fwlink/?linkid=873093) (15.7 или новее) с *ASP.NET and web development*.
+1. Установите последнюю версию [Blazor Language Services extension](https://go.microsoft.com/fwlink/?linkid=870389) из Visual Studio Marketplace.
 
-To create your first project from Visual Studio:
+Чтобы создать свой первый проект используя Visual Studio:
 
-1. Select **File** > **New Project** > **Web** > **ASP.NET Core Web Application**.
-1. Make sure **.NET Core** and **ASP.NET Core 2.1** (or later) are selected at the top.
-1. Choose the Blazor template and select **OK**.
+1. Выберите **File** > **New Project** > **Web** > **ASP.NET Core Web Application**.
+1. Убедитель что **.NET Core** и **ASP.NET Core 2.1** (или новее) выбранны в верху.
+1. Выберите шаблон Blazor и нажмите **OK**.
 
-   ![New Blazor app dialog](https://msdnshared.blob.core.windows.net/media/2018/07/new-blazor-app-dialog-0.5.0.png)
+   ![Диалог нового приложения Blazor](https://msdnshared.blob.core.windows.net/media/2018/07/new-blazor-app-dialog-0.5.0.png)
    
-1. Press **Ctrl-F5** to run the app *without the debugger*. Running with the debugger (**F5**) isn't supported at this time.
+1. Нажмите **Ctrl-F5** чтобы запустить приложение *без отладчика*. Работа с отладчиком произойдёт при нажатии  (**F5**) в настоящее время это не поддерживается.
 
-You can also install and use the Blazor templates from the command-line:
+Вы также можете установить и использовать шаблоны Blazor из командной строки:
 
 ```console
 dotnet new -i Microsoft.AspNetCore.Blazor.Templates
@@ -40,21 +40,21 @@ cd BlazorApp1
 dotnet run
 ```
 
-Congrats! You just ran your first Blazor app!
+Поздравляем! Вы запустили ваше первое Blazor приложение!
 
-![Blazor app home page](https://msdnshared.blob.core.windows.net/media/2018/04/blazor-bootstrap-4.png)
+![Домашняя страница приложения Blazor](https://msdnshared.blob.core.windows.net/media/2018/04/blazor-bootstrap-4.png)
 
-## Help & feedback
+## Помощь и обратная связь
 
-Your feedback is especially important to us during this experimental phase for Blazor. If you run into issues or have questions while trying out Blazor, please let us know!
+Обратная связь особенно важна для нас на этой экспериментальной фазе для Blazor. Если у вас возникли проблемы или у вас возникли вопросы, попробовав Blazor, сообщите нам об этом!
 
-* [File issues on GitHub](https://github.com/aspnet/blazor/issues) for any problems you run into or to make suggestions for improvements.
-* Chat with us and the Blazor community on [Gitter](https://gitter.im/aspnet/blazor) if you get stuck or to share how Blazor is working for you.
+* [Проблемы на GitHub](https://github.com/aspnet/blazor/issues) для любых проблем, с которыми вы сталкиваетесь, или для внесения предложений по улучшению.
+* Пообщайтесь с нами и сообществом Blazor в [Gitter](https://gitter.im/aspnet/blazor) если вы в затруднении или хотите поделиться тем, как Blazor работает у вас.
 
-After you've tried out Blazor, please let us know what you think by taking our in-product survey. Just click the survey link shown on the app home page when running one of the Blazor project templates:
+После того, как вы попробовали Blazor, сообщите нам, что вы думаете, перейдя на страницу опроса. Просто нажмите ссылку опроса, показанную на домашней странице приложения при запуске одного из шаблонов проекта Blazor:
 
-![Blazor survey](https://msdnshared.blob.core.windows.net/media/2018/05/blazor-survey-new.png)
+![Опрос Blazor](https://msdnshared.blob.core.windows.net/media/2018/05/blazor-survey-new.png)
 
-## What's next?
+## Что дальше?
 
 <xref:client-side/blazor/tutorials/first-app>

@@ -1,5 +1,5 @@
 ---
-title: Build your first Blazor app
+title: Создайте свое первое приложение
 author: guardrex
 description: Build a Blazor app step-by-step and quickly learn the basic features of the Blazor framework.
 manager: wpickett
@@ -11,7 +11,7 @@ ms.technology: aspnet
 ms.topic: article
 uid: client-side/blazor/tutorials/first-app
 ---
-# Build your first Blazor app
+# Создайте свое первое приложение
 
 [!INCLUDE[](~/includes/blazor-preview-notice.md)]
 
