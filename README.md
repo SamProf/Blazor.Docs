@@ -1,7 +1,7 @@
-# Blazor Docs
+# Документация Blazor
 
-This project provides the source for the [Blazor documentation](http://blazor.net).
+Данный проект является источником для [документации Blazor](http://blazor.net) на русском языке.
 
-To contribute to the Blazor documentation, please refer to the [Contributing Guide](https://github.com/aspnet/Blazor.Docs/blob/master/CONTRIBUTING.md).
+Проект не является официальным ресурсом, является форком [Blazor Docs](https://github.com/aspnet/Blazor.Docs) переведённым и дополненным.
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+Для внесения вклада в документацию Blazor на русском языке вы можете отправлять свои изменения/дополнения через механизм **pull request**.
