@@ -10,7 +10,7 @@ documentType: index
       <strong>Blazor</strong>
     </h1>
     <div class="minitext">
-        Full stack веб-разработка используя C# and WebAssembly
+        Full stack веб-разработка используя C# и WebAssembly
     </div>
     <div class="buttons-unit">
       <a href="/docs/get-started.html" class="button"><i class="glyphicon glyphicon-send"></i>Начать</a>
