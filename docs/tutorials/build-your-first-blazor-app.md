@@ -15,24 +15,24 @@ uid: client-side/blazor/tutorials/first-app
 
 [!INCLUDE[](~/includes/blazor-preview-notice.md)]
 
-In this tutorial, you build a Blazor app step-by-step and quickly learn the basic features of the Blazor framework.
+Используя данную инструкцию, вы постепенно создаете приложение Blazor и быстро изуизучите основные функции фреймворка Blazor.
 
-[View or download sample code](https://github.com/aspnet/Blazor.Docs/tree/master/docs/tutorials/build-your-first-blazor-app/samples/) ([how to download](xref:client-side/blazor/index#view-and-download-samples)). See the [Get started](xref:client-side/blazor/get-started) topic for prerequisites.
+[Посмотрите или скачайте примеры кода](https://github.com/aspnet/Blazor.Docs/tree/master/docs/tutorials/build-your-first-blazor-app/samples/) ([как скачать](xref:client-side/blazor/index#view-and-download-samples)). Смотрите [Начало работы с Blazor](xref:client-side/blazor/get-started).
 
-To create the project in Visual Studio:
+Чтобы создать проект в Visual Studio:
 
-1. Select **File** > **New** > **Project**. Select **Web** > **ASP.NET Core Web Application**. Name the project "BlazorApp1" in the **Name** field. Select **OK**.
+1. Выберите **File** > **New** > **Project**. Выберите **Web** > **ASP.NET Core Web Application**. Запишите название проекта "BlazorApp1" в поле **Name**. Нажмите **OK**.
 
-    ![New ASP.NET Core project](https://raw.githubusercontent.com/aspnet/Blazor.Docs/gh-pages/docs/tutorials/build-your-first-blazor-app/_static/new-aspnet-core-project.png)
+    ![Новый ASP.NET Core проект](https://raw.githubusercontent.com/aspnet/Blazor.Docs/gh-pages/docs/tutorials/build-your-first-blazor-app/_static/new-aspnet-core-project.png)
 
-1. The **New ASP.NET Core Web Application** dialog appears. Make sure **.NET Core** is selected at the top. Select either **ASP.NET Core 2.0** or **ASP.NET Core 2.1**. Choose the **Blazor** template and select **OK**.
+1. Появится диалог **New ASP.NET Core Web Application**. Убедимся что выбрано **.NET Core** в верху окна. Выберите либо **ASP.NET Core 2.0** либо **ASP.NET Core 2.1**. Выберите шаблон **Blazor** и нажмите **OK**.
 
-    ![New Blazor app dialog](https://raw.githubusercontent.com/aspnet/Blazor.Docs/gh-pages/docs/tutorials/build-your-first-blazor-app/_static/new-blazor-app-dialog.png)
+    ![Диалог нового Blazor приложения](https://raw.githubusercontent.com/aspnet/Blazor.Docs/gh-pages/docs/tutorials/build-your-first-blazor-app/_static/new-blazor-app-dialog.png)
 
-1. Once the project is created, press **Ctrl-F5** to run the app *without the debugger*. Running with the debugger (**F5**) isn't supported at this time.
+1. Когда проект будет создан, нажмите **Ctrl-F5** для запуска приложения *без отладчика*. Работа с отладчиком (**F5**) в настоящее время не поддерживается.
 
 > [!NOTE]
-> If not using Visual Studio, create the Blazor app at a command prompt on Windows, macOS, or Linux:
+> Если вы не используете Visual Studio, вы можете создавать Blazor приложения используя командную строку Windows, macOS или Linux:
 >
 > ```console
 > dotnet new blazor -o BlazorApp1
@@ -40,25 +40,25 @@ To create the project in Visual Studio:
 > dotnet run
 > ```
 >
-> Navigate to the app using the localhost address and port provided in the console window output after `dotnet run` is executed. Use **Ctrl-C** in the console window to shutdown the app.
+> Перейдите в приложение используя адрес **localhost** и порт, который отобразится в окне консоли после выполнения команды `dotnet run`. Используйте сочетание клавиш **Ctrl-C** в окне консоли для завершения приложения.
 
-The Blazor app runs in the browser:
+Приложение Blazor запущено в браузере:
 
-![Blazor app Home page](https://user-images.githubusercontent.com/1874516/39509497-5515c3ea-4d9b-11e8-887f-019ea4fdb3ee.png)
+![Домашняя страница Blazor приложения](https://user-images.githubusercontent.com/1874516/39509497-5515c3ea-4d9b-11e8-887f-019ea4fdb3ee.png)
 
-## Build components
+## Сборка компонентов
 
-1. Browse to each of the app's three pages: Home, Counter, and Fetch data.
+1. Посетите каждую из 3 доступных страниц: *Home*, *Counter* и *Fetch data*.
 
-    These three pages are implemented by the three Razor files in the *Pages* folder: *Index.cshtml*, *Counter.cshtml*, and *FetchData.cshtml*. Each of these files implements a Blazor component that's compiled and executed client-side in the browser.
+    Эти три страницы реализованы тремя файлами Razor в каталоге *Pages*: *Index.cshtml*, *Counter.cshtml* и *FetchData.cshtml*. Каждый из этих файлов реализует компонент Blazor, который компилируется и выполняется на стороне клиента в браузере.
 
-1. Select the button on the Counter page.
+1. Нажмите кнопку на странице *Counter*.
 
-    ![Blazor app Home page](https://user-images.githubusercontent.com/1874516/39509525-6e367c66-4d9b-11e8-9978-e52a9750c34b.png)
+    ![Страница Counter приложения Blazor](https://user-images.githubusercontent.com/1874516/39509525-6e367c66-4d9b-11e8-9978-e52a9750c34b.png)
 
-    Each time the button is selected, the counter is incremented without a page refresh. Normally, this kind of client-side behavior is handled in JavaScript; but here, it's implemented in C# and .NET by the `Counter` component.
+    Каждый раз, когда нажимается кнопка, счетчик увеличивается без обновления страницы. Обычно такое поведение на стороне клиента реализуется в JavaScript; но здесь это реализовано используя C# в компоненте `Counter`.
     
-1. Take a look at the implementation of the `Counter` component in the *Counter.cshtml* file:
+1. Взгляните на реализацию компонента `Counter` в файле *Counter.cshtml*:
 
     ```cshtml
     @page "/counter"
@@ -79,20 +79,21 @@ The Blazor app runs in the browser:
     }
     ```
 
-    The UI for the `Counter` component is defined using normal HTML. Dynamic rendering logic (for example, loops, conditionals, expressions) is added using an embedded C# syntax called [Razor](https://docs.microsoft.com/aspnet/core/mvc/views/razor). The HTML markup and C# rendering logic are converted into a component class at build time. The name of the generated .NET class matches the name of the file.
+    Пользовательский интерфейс для компонента `Counter` определяется обычным HTML. Динамическая логика визуализации (например, циклы, условия, выражения) добавляется с использованием синтаксиса C# [Razor](https://docs.microsoft.com/aspnet/core/mvc/views/razor). 
+    HTML-разметка и логика отображения C# преобразуются в класс компонента во время сборки. Имя сгенерированного .NET-класса соответствует имени файла.
 
-    Members of the component class are defined in a `@functions` block. In the `@functions` block, component state (properties, fields) and methods can be specified for event handling or for defining other component logic. These members can then be used as part of the component's rendering logic and for handling events.
+    Компоненты класса определяются в блоке `@functions`. В блоке `@functions`, компоненты состояния (свойства, поля) и методы могут быть указаны для обработки событий или для определения другой логики компонента. Эти элементы затем могут использоваться как часть логики рендеринга компонента и для обработки событий.
 
-    When the button is selected, the `Counter` component's registered `onclick` handler is called (the `IncrementCount` method) and the `Counter` component regenerates its render tree. Blazor compares the new render tree against the previous one and applies any modifications to the browser Document Object Model (DOM). The displayed count is updated.
+    Когда нажимается кнопка, в компоненте `Counter` вызывается зарегистрированный обработчик `onclick` (метод `IncrementCount`) и конпонент `Counter` регенерирует дерево рендеринга. Blazor сравнивает новое дерево рендеринга с предыдущим и применяет все модификации в Document Object Model (DOM) браузера. Отображаемый счетчик обновляется.
 
-1. Update the markup for the `Counter` component to make the top-level header more *exciting*.
+1. Обновите разметку для компонента `Counter` чтобы сделать заголовок верхнего уровня более *захватывающим*.
 
     ```cshtml
     @page "/counter"
     <h1><em>Counter!!</em></h1>
     ```
 
-1. Also modify the C# logic of the `Counter` component to make the count increment by two instead of one.
+1. Также измените логику C# компонента `Counter` так, чтобы значение увиличивалось на 2 за раз.
 
     ```cshtml
     @functions {
@@ -105,15 +106,15 @@ The Blazor app runs in the browser:
     }
     ```
 
-1. Refresh the counter page in the browser to see the changes.
+1. Перезагрузите страницу в браузере чтобы увидеть изменения.
 
-    ![Exciting counter](https://user-images.githubusercontent.com/1874516/39509668-e8949a92-4d9b-11e8-91e9-b6a494695d92.png)
+    ![Захватывающий счетчик](https://user-images.githubusercontent.com/1874516/39509668-e8949a92-4d9b-11e8-91e9-b6a494695d92.png)
 
-## Use components
+## Используйте компоненты
 
-After a component is defined, the component can be used to implement other components. The markup for using a component looks like an HTML tag where the name of the tag is the component type.
+После того как компонент определён, он может быть использован для реализации других компонентов. Разметка для использования компонента выглядит как HTML тег, где имя тега является типом компонента.
 
-1. Add a `Counter` component to the Home page of the app (*Index.cshtml*).
+1. Добавьте компонент `Counter` на главную страницу приложения (*Index.cshtml*).
 
     ```cshtml
     @page "/"
@@ -127,15 +128,15 @@ After a component is defined, the component can be used to implement other compo
     <Counter />
     ```
 
-1. Refresh the home page in the browser. Note the separate instance of the `Counter` component on the Home page.
+1. Перезагрузите домашнюю страницу в браузере. Обратите внимание на отдельный экземпляр компонента `Counter` на главной странице.
 
-    ![Blazor Home page with counter](https://user-images.githubusercontent.com/1874516/39509718-224483f6-4d9c-11e8-9030-b4c7228d669d.png)
+    ![Blazor домашняя страница с добавленным компонентом Counter](https://user-images.githubusercontent.com/1874516/39509718-224483f6-4d9c-11e8-9030-b4c7228d669d.png)
 
-## Component parameters
+## Параметры компонента
 
-Components can also have parameters, which are defined using private properties on the component class decorated with `[Parameter]`. Use attributes to specify arguments for a component in markup. 
+Компоненты также могут иметь параметры, который задаются используя свойства класса компонента, которые помечены атрибутом `[Parameter]`. Используйте атрибуты для указания аргументов для компонента в разметке.
 
-1. Update the `Counter` component to have an `IncrementAmount` parameter that defaults to 1.
+1. Обновите компонент `Counter` добавив параметр `IncrementAmount` со значением по умолчанию `1`.
 
     ```cshtml
     @functions {
@@ -152,7 +153,7 @@ Components can also have parameters, which are defined using private properties 
     ```
 
     > [!NOTE]
-    > From Visual Studio, you can quickly add a component parameter by using the `para` snippet. Type `para` and then press the `Tab` key twice.
+    > Используя Visual Studio, вы можете быстро добавлять параметры компонента, используя сниппет `para`. Наберите `para` и нажмите `Tab` дважды.
 
 1. On the Home page (*Index.cshtml*), change the increment amount for the `Counter` to 10 by setting an attribute that matches the name of the component's property for `IncrementCount`.
 
