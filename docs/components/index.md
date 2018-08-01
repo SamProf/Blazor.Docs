@@ -1,7 +1,7 @@
 ---
-title: Blazor components
+title: Компоненты Blazor
 author: guardrex
-description: Learn how to create and use Blazor components, the fundamental building blocks of Blazor apps provided by compiled Razor or C# files.
+description: Узнайте, как создавать и использовать компоненты Blazor, основные строительные блоки приложений Blazor, предоставляемые скомпилированными файлами Razor или C#.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -13,15 +13,15 @@ uid: client-side/blazor/components/index
 ---
 # Конпоненты Blazor
 
-By [Luke Latham](https://github.com/guardrex) and [Daniel Roth](https://github.com/danroth27)
+От [Luke Latham](https://github.com/guardrex) и [Daniel Roth](https://github.com/danroth27)
 
 [!INCLUDE[](~/includes/blazor-preview-notice.md)]
 
-[Посмотреть или скачать примеры кода](https://github.com/aspnet/Blazor.Docs/tree/master/docs/common/samples/) ([как скачать](xref:client-side/blazor/index#view-and-download-samples)). See the [Начать](xref:client-side/blazor/get-started) topic for prerequisites.
+[Посмотреть или скачать примеры кода](https://github.com/aspnet/Blazor.Docs/tree/master/docs/common/samples/) ([как скачать](xref:client-side/blazor/index#view-and-download-samples)). Смотрите также [Начать](xref:client-side/blazor/get-started), для начала работы с Blazor.
 
-Blazor apps are built using *components*. A component is a self-contained chunk of user interface (UI), such as a page, dialog, or form. A component includes both the HTML markup to render along with the processing logic needed to inject data or respond to UI events. Components are flexible and lightweight, and they can be nested, reused, and shared between projects.
+Приложения Blazor создаются с использованием *компонентов*. Компонент представляет собой автономный фрагмент пользовательского интерфейса (UI), такой как страница, диалог или форма. Компонент включает как разметку HTML для рендеринга, так и логику обработки, необходимую для ввода данных или реагирования на события пользовательского интерфейса. Компоненты являются гибкими и легкими, и они могут быть вложенными, повторно использованными и совместно использоваться несколькими проектами.
 
-## Component classes
+## Классы компонентов
 
 Blazor components are typically implemented in *\*.cshtml* files using a combination of C# and HTML markup. The UI for a component is defined using HTML. Dynamic rendering logic (for example, loops, conditionals, expressions) is added using an embedded C# syntax called [Razor](https://docs.microsoft.com/aspnet/core/mvc/views/razor). When a Blazor app is compiled, the HTML markup and C# rendering logic are converted into a component class. The name of the generated class matches the name of the file.
 
