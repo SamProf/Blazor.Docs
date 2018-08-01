@@ -399,13 +399,13 @@ uid: client-side/blazor/tutorials/first-app
     </ul>
     ```
 
-1. To verify that these values are bound, update the `h1` header to show a count of the number of todo items that are not yet done (`IsDone` is `false`).
+1. Для проверки, что эти значения связаны, обновите `h1` заголовок, добавив отображение количества элементов списка задач, которые еще не выполнены (`IsDone` равно `false`).
 
     ```cshtml
     <h1>Todo (@todos.Where(todo => !todo.IsDone).Count())</h1>
     ```
     
-1. The completed `Todo` component should look like this:
+1. Готовый компонент `Todo` должен выглядеть следующим образом:
 
     ```cshtml
     @page "/todo"
@@ -440,43 +440,43 @@ uid: client-side/blazor/tutorials/first-app
     }
     ```
 
-Refresh the app in the browser. Try adding some todo items.
+Перезагрузите страницу браузера. Попробуйте добавить несколько новых задач.
 
-![Finished Blazor todo list](https://user-images.githubusercontent.com/1874516/39512621-83406508-4da6-11e8-8244-5bae2ac6b22d.png)
+![Завершённый список задач на Blazor](https://user-images.githubusercontent.com/1874516/39512621-83406508-4da6-11e8-8244-5bae2ac6b22d.png)
 
-## Publish and deploy
+## Публикация и развёртывание
 
-When using Visual Studio, perform the following steps to publish the Todo Blazor app to Azure:
+При использовании Visual Studio выполните следующие шаги, чтобы опубликовать приложение Blazor в Azure:
 
-1. Right-click on the project in **Solution Explorer** and select **Publish**.
+1. Нажмите правой кнопкой мыши на проекте в **Solution Explorer** и выберите **Publish**.
 
-1. In the **Pick a publish target** dialog, select **App Service** and **Create New**. Select **Publish**.
+1. В диалоге **Pick a publish target** выберите **App Service** и **Create New**. Затем нажмите **Publish**.
 
-    ![Pick a publish target](https://raw.githubusercontent.com/aspnet/Blazor.Docs/gh-pages/docs/tutorials/build-your-first-blazor-app/_static/blazor-publish-pick-target.png)
+    ![Выберите цель публикации](https://raw.githubusercontent.com/aspnet/Blazor.Docs/gh-pages/docs/tutorials/build-your-first-blazor-app/_static/blazor-publish-pick-target.png)
 
-1. In the **Create App Service** dialog, choose a name for the app and select the subscription, resource group, and hosting plan. Select **Create** to create the app service and publish the app.
+1. В диалоге **Create App Service** выберите имя проекта, укажите подписку, группу ресурсов и план размещения. Нажмите **Create** чтобы создать сервис и опубликовать приложение.
 
-    ![Create app service](https://raw.githubusercontent.com/aspnet/Blazor.Docs/gh-pages/docs/tutorials/build-your-first-blazor-app/_static/blazor-publish-create-appservice2.png)
+    ![Создание сервиса приложений](https://raw.githubusercontent.com/aspnet/Blazor.Docs/gh-pages/docs/tutorials/build-your-first-blazor-app/_static/blazor-publish-create-appservice2.png)
 
-Wait a minute or so for the app to be deployed.
+Подождите минуту, чтобы приложение было развернуто.
 
-The app should now be running in Azure. Mark the todo item to build your first Blazor app as *done*. Nice job!
+Теперь приложение должно работать в Azure. Можете отметить в вашем списке задач `Создать первое Blazor приложение` как *выполнено*. Отличная работа!
 
 ![Blazor on Azure](https://user-images.githubusercontent.com/1874516/39512621-83406508-4da6-11e8-8244-5bae2ac6b22d.png)
 
 > [!NOTE]
-> If not using Visual Studio, publish the Blazor app at a command prompt on Windows, macOS, or Linux:
+> Если вы не используете Visual Studio, опубликовать Blazor приложение можно используя командную строку в Windows, macOS, или Linux:
 >
 > ```console
 > dotnet publish -c Release
 > ```
 >
-> The deployment is created in the */bin/Release/\<target-framework>/publish* folder. Move the contents of the *publish* folder to the server or hosting service.
+> Развертывание создается в */bin/Release/\<target-framework>/publish* каталоге. Переместите контент из каталога *publish* на сервер или сервис хостинга.
 >
-> For more information, see the [Host and deploy](xref:client-side/blazor/host-and-deploy/index#publish-the-app) topic.
+> Больше информации здесь [Хостинг и развёртывание](xref:client-side/blazor/host-and-deploy/index#publish-the-app).
 
-## Additional resources
+## Дополнительные ресурсы
 
-For a more involved Blazor sample app, check out the [Flight Finder sample](https://github.com/aspnet/samples/tree/master/samples/aspnetcore/blazor) on GitHub.
+В качестве более сложного примера Blazor приложения, ознакомьтесь с примером [Flight Finder](https://github.com/aspnet/samples/tree/master/samples/aspnetcore/blazor) на GitHub.
 
 ![Blazor Flight Finder](https://msdnshared.blob.core.windows.net/media/2018/03/blazor-flight-finder.png)
