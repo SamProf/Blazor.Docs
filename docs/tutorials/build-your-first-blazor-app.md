@@ -155,34 +155,34 @@ uid: client-side/blazor/tutorials/first-app
     > [!NOTE]
     > Используя Visual Studio, вы можете быстро добавлять параметры компонента, используя сниппет `para`. Наберите `para` и нажмите `Tab` дважды.
 
-1. On the Home page (*Index.cshtml*), change the increment amount for the `Counter` to 10 by setting an attribute that matches the name of the component's property for `IncrementCount`.
+1. На главной странице (*Index.cshtml*), узмените сумму увеличения до 10, задав значение для свойства `IncrementCount` компонента `Counter`.
 
     ```cshtml
     <Counter IncrementAmount="10" />
     ```
 
-1. Reload the page.
+1. Перезагрузите страницу.
 
-    The counter on the Home page now increments by 10, while the counter on the Counter page still increments by 1.
+    Счетчик на главной странице сейчас увеличивается 10 за раз, тогда как счетчик на странице Counter по прежнему увеличивается только на 1.
 
-    ![Blazor count by ten](https://user-images.githubusercontent.com/1874516/39509798-618f0720-4d9c-11e8-9125-3d4c634dff46.png)
+    ![Blazor увеличение счетчика на 10](https://user-images.githubusercontent.com/1874516/39509798-618f0720-4d9c-11e8-9125-3d4c634dff46.png)
 
-## Route to components
+## Маршрутизация компонентов
 
-The `@page` directive at the top of the *Counter.cshtml* file specifies that this component is a page to which requests can be routed. Specifically, the `Counter` component handles requests sent to `/Counter`. Without the `@page` directive, the component wouldn't handle routed requests, but the component could still be used by other components.
+Директива `@page` вверху файла *Counter.cshtml* определяет что данный файл является страницей, на которую могут быть отправлены запросы. Например, для страницы `Counter` обрабатываются запросы, отправленные по адресу `/Counter`. Без директивы `@page` компонент не будет обрабатывать запросы маршрутизации, но компонент по прежнему сможет использоваться в других компонентах.
 
-## Dependency injection
+## Внедрение зависимостей
 
-Services registered with the app's service provider are available to components via [dependency injection (DI)](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection). Services can be injected into a component using the `@inject` directive.
+Сервисы, зарегистрированные в приложении в провайдере сервисов, доступны в компонентах через [dependency injection (DI)](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection). Сервисы могут быть вставлены в компонент используя директиву `@inject`.
 
-Take a look at the implementation of the `FetchData` component in *FetchData.cshtml*. The `@inject` directive is used to inject an [HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) instance into the component.
+Взгляните на реализацию компонента `FetchData` в файле *FetchData.cshtml*. Директива `@inject` используется для внедрения экземпляра [HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) в компонент.
 
 ```cshtml
 @page "/fetchdata"
 @inject HttpClient Http
 ```
 
-The `FetchData` component uses the injected `HttpClient` to retrieve JSON data from the server when the component is initialized. Under the covers, the `HttpClient` provided by the Blazor runtime is implemented using JavaScript interop to call the underlying browser's Fetch API to send the request (from C#, it's possible to call any JavaScript library or browser API). The retrieved data is deserialized into the `forecasts` C# variable as an array of `WeatherForecast` objects.
+Компонент `FetchData` использует внедрение `HttpClient` для получения JSON данных с сервера, когда компонент инициализирован. За кулисами `HttpClient` предоставляемый исполняемой средой Blazor, реализуется с использованием JavaScript-взаимодействия для вызова API-интерфейса браузера для отправки запроса (из C#, можно вызвать любую библиотеку JavaScript или API браузера). Полученные данные десериализуются в C# переменную `forecasts`, которая определена как массив `WeatherForecast` объектов.
 
 ```cshtml
 @functions {
@@ -203,7 +203,7 @@ The `FetchData` component uses the injected `HttpClient` to retrieve JSON data f
 }
 ```
 
-A `@foreach` loop is used to render each forecast instance as a row in the weather table.
+Цикл `@foreach` используется для отображения каждого экземпляра `forecast` в виде строки в таблице погоды.
 
 ```cshtml
 <table class="table">
@@ -229,13 +229,13 @@ A `@foreach` loop is used to render each forecast instance as a row in the weath
 </table>
 ```
 
-## Build a todo list
+## Создайте список задач
 
-Add a new page to the app that implements a simple todo list.
+Добавьте новую страницу в приложение для реализации простого списка задач.
 
-1. Add an empty text file to the *Pages* folder named *Todo.cshtml*.
+1. Добавьте пустой файл в каталог *Pages* назовите его *Todo.cshtml*.
 
-1. Provide the initial markup for the page.
+1. Добавьте начальную разметку для страницы.
 
     ```cshtml
     @page "/todo"
@@ -243,7 +243,7 @@ Add a new page to the app that implements a simple todo list.
     <h1>Todo</h1>
     ```
 
-1. Add the Todo page to the navigation bar by updating *Shared/NavMenu.cshtml*. Add a `NavLink` for the Todo page by adding the following list item markup below the existing list items.
+1. Добавьте страницу задач в навигационное меню, обновив *Shared/NavMenu.cshtml*. Добавьте `NavLink` для страницы задач, добавив следующую разметку ниже существующего списка.
 
     ```cshtml
     <li class="nav-item px-3">
@@ -253,13 +253,13 @@ Add a new page to the app that implements a simple todo list.
     </li>
     ```
 
-1. Refresh the app in the browser. See the new Todo page.
+1. Перезагрузите страницу браузера. Посмотрите новую страницу задач.
 
-    ![Blazor todo start](https://user-images.githubusercontent.com/1874516/39509907-bb27e77a-4d9c-11e8-91e7-ea1e7c01729e.png)
+    ![Blazor страница списка задач](https://user-images.githubusercontent.com/1874516/39509907-bb27e77a-4d9c-11e8-91e7-ea1e7c01729e.png)
 
-1. Add a *TodoItem.cs* file to the root of the project to hold a class to represent the todo items.
+1. Добавьте файл *TodoItem.cs* в корень проекта, в нём будут храниться отдельные задачи нашего списка задач.
 
-1. Use the following C# code for the `ToDoItem` class.
+1. Используйте следующий код для класса `ToDoItem`.
 
     ```csharp
     public class TodoItem
@@ -269,7 +269,7 @@ Add a new page to the app that implements a simple todo list.
     }
     ```
 
-1. Go back to the `Todo` component in *Todo.cshtml* and add a field for the todos in a `@functions` block. The `Todo` component uses this field to maintain the state of the todo list.
+1. Вернитесь в компонент `Todo` в *Todo.cshtml* и добавьте поле `todos` в блоке `@functions`. Компонент `Todo` использует данное поле для хранения состояния списка задач.
 
     ```cshtml
     @functions {
@@ -277,7 +277,7 @@ Add a new page to the app that implements a simple todo list.
     }
     ```
 
-1. Add unordered list markup and a `foreach` loop to render each todo item as a list item.
+1. Добавьте разметку неупорядоченного списка и цикл `foreach` для отображения каждой записи как элемента списка.
 
     ```cshtml
     @page "/todo"
@@ -292,7 +292,7 @@ Add a new page to the app that implements a simple todo list.
     </ul>
     ```
 
-1. The app requires UI elements for adding todos to the list. Add a text input and a button below the list.
+1. Приложению требуютя элементы пользовательского интерфейса для добавления задач в список. Добавьте элемент для ввода текста и кнопку ниже списка.
 
     ```cshtml
     @page "/todo"
@@ -314,13 +314,13 @@ Add a new page to the app that implements a simple todo list.
     }
     ```
 
-1. Refresh the browser.
+1. Перезагрузите браузер.
 
-    ![Add todo button](https://user-images.githubusercontent.com/1874516/39512402-bc88ab46-4da5-11e8-9e3f-87b875b56383.png)
+    ![Добавлена кнопка добавления новых задач](https://user-images.githubusercontent.com/1874516/39512402-bc88ab46-4da5-11e8-9e3f-87b875b56383.png)
 
-    Nothing happens when the **Add todo** button is selected because no event handler is wired up to the button.
+    Ничего не произойдёт, если нажать на кнопку **Add todo** так как сейчас нет соответствующего обработчика событий.
 
-1. Add an `AddTodo` method to the `Todo` component and register it for button clicks using the `onclick` attribute.
+1. Добавьте метод `AddTodo` в компонент `Todo` и зарегистрируйте его использование при нажатии на кнопку, используя аттрибут `onclick`.
 
     ```cshtml
     <input placeholder="Something todo" />
@@ -336,9 +336,9 @@ Add a new page to the app that implements a simple todo list.
     }
     ```
 
-    The `AddTodo` C# method is called every time the button is selected.
+    C# метод `AddTodo` вызывается каждый раз, когда нажимается кнопка.
 
-1. To get the title of the new todo item, add a `newTodo` string field and bind it to the value of the text input using the `bind` attribute.
+1. Для полечения заголовка новой задачи добавьте новое текстовое поле `newTodo` и свяжите его значение с полем для ввода текста, используя аттрибут `bind`.
 
     ```csharp
     IList<TodoItem> todos = new List<TodoItem>();
@@ -349,7 +349,7 @@ Add a new page to the app that implements a simple todo list.
     <input placeholder="Something todo" bind="@newTodo" />
     ```
 
-1. Update the `AddTodo` method to add the `TodoItem` with the specified title to the list. Don't forget to clear the value of the text input by setting `newTodo` to an empty string.
+1. Обновите метод `AddTodo` добавив в `TodoItem` запись заголовка новой задачи. Не забудьте очистить значение элемента ввода текста, записав в `newTodo` пустую строку.
 
     ```cshtml
     @page "/todo"
@@ -381,11 +381,11 @@ Add a new page to the app that implements a simple todo list.
     }
     ```
 
-1. Refresh the browser. Add some todos to the todo list.
+1. Перезагрузите браузер. И добавьте несколько задач в список.
 
-    ![Add todos](https://user-images.githubusercontent.com/1874516/39512531-2d2ff62e-4da6-11e8-8b83-291b0efc821b.png)
+    ![Список задач](https://user-images.githubusercontent.com/1874516/39512531-2d2ff62e-4da6-11e8-8b83-291b0efc821b.png)
 
-1. Lastly, what's a todo list without check boxes? The title text for each todo item can be made editable as well. Add a check box input and text input for each todo item and bind their values to the `Title` and `IsDone` properties, respectively.
+1. Наконец, что же это за список задач без флажков? Так же текст заголовка для каждой задачи должен быть доступен для редактирования. Добавим флажок и текстовое поле для каждой задачи, а их значения свяжем со свойствами `IsDone` и `Title` соответственно.
 
     ```cshtml
     <ul>
