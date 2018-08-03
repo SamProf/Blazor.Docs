@@ -1,7 +1,7 @@
 ---
-title: Frequently asked questions (FAQ) about Blazor
+title: Часто задаваемые вопросы (FAQ) о Blazor
 author: guardrex
-description: Find the answers to frequently asked questions about Blazor.
+description: Найдите ответы на часто задаваемые вопросы о Blazor.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -11,123 +11,123 @@ ms.technology: aspnet
 ms.topic: article
 uid: client-side/blazor/introduction/faq
 ---
-# Frequently asked questions (FAQ) about Blazor
+# Часто задаваемые вопросы (FAQ) о Blazor
 
 [!INCLUDE[](~/includes/blazor-preview-notice.md)]
 
-## What is Blazor?
+## Что такое Blazor?
 
-Blazor is a single-page web app framework built on .NET that runs in the browser with WebAssembly.
+Blazor - это одностраничная платформа веб-приложений, построенная на .NET, которая работает в браузере с помощью WebAssembly.
 
-## I'm new to .NET. What's .NET?
+## Я новичок в .NET. Что такое .NET?
 
-[.NET](https://www.microsoft.com/net) is a free, cross-platform, open source developer platform for building many different types of apps (desktop, mobile, games, web). .NET includes a managed runtime, a standard set of [libraries](https://docs.microsoft.com/dotnet/api), and support for multiple modern programming languages: [C#](https://docs.microsoft.com/dotnet/csharp/), [F#](https://docs.microsoft.com/dotnet/fsharp/), and [VB](https://docs.microsoft.com/dotnet/visual-basic/). You can [get started with .NET in 10 min](https://www.microsoft.com/net/learn/get-started/windows).
+[.NET](https://www.microsoft.com/net) это бесплатная, кросс-платформенная платформа для разработчиков с открытым исходным кодом для создания множества различных типов приложений (настольных, мобильных, игр, сетевых приложений). .NET включает управляемую среду выполнения, стандартный набор [библиотек](https://docs.microsoft.com/dotnet/api), и поддержку многих современных языков программирования: [C#](https://docs.microsoft.com/dotnet/csharp/), [F#](https://docs.microsoft.com/dotnet/fsharp/) и [VB](https://docs.microsoft.com/dotnet/visual-basic/). Вы можете [начать работать с .NET за 10 минут](https://www.microsoft.com/net/learn/get-started/windows).
 
-## Why would I use .NET for web development?
+## Почему я должен использовать .NET для веб-разработки?
 
-Using .NET in the browser offers many advantages that can help make web development easier and more productive:
+Использование .NET в браузере дает много преимуществ, которые могут помочь сделать веб-разработку проще и продуктивнее:
 
-* **Stable and consistent**: .NET offers standard APIs, tools, and build infrastructure across all .NET platforms that are stable, feature rich, and easy to use.
-* **Modern innovative languages**: .NET languages like [C#](https://docs.microsoft.com/dotnet/csharp/) and [F#](https://docs.microsoft.com/dotnet/fsharp/) make programming a joy and keep getting better with innovative new language features.
-* **Industry leading tools**: The [Visual Studio](https://www.visualstudio.com/) product family provides a great .NET development experience on Windows, Linux, and macOS.
-* **Fast and scalable**: .NET has a long history of performance, reliability, and security on the server. Using .NET as a full-stack solution makes it easier to scale your apps.
+* **Стабильность и согласованность**: .NET обеспечивает стандартизированные рамки программирования на всех платформах, они являются стабильными, многофункциональными и простыми в использовании.
+* **Современные инновационные языки**: Языки .NET такие как [C#](https://docs.microsoft.com/dotnet/csharp/) и [F#](https://docs.microsoft.com/dotnet/fsharp/) позволяют программировать с удовольствием, так как они постоянно улучшаются и поддерживают всё больше необходимого современного функционала.
+* **Лучшие инструменты в отрасли**: Семейство продуктов [Visual Studio](https://www.visualstudio.com/) обеспечивает фантастическую разработку используя .NET на всех платформах в Windows, Linux и MacOS.
+* **Скорость и масштабируемость**: .NET имеет сильную историю производительности, надежности и безопасности для разработки приложений. Использование .NET в качестве решения для full-stack разработки упрощает создание быстрых, надежных и безопасных приложений.
 
-## How can you run .NET in a web browser?
+## Как вы можете запустить .NET в веб-браузере?
 
-Running .NET in the browser is made possible by a relatively new standardized web technology called [WebAssembly](http://webassembly.org/). WebAssembly is a "portable, size- and load-time-efficient format suitable for compilation to the web." Code compiled to WebAssembly can run in any browser at native speeds. To run .NET binaries in a web browser, we use a .NET runtime (specifically [Mono](http://www.mono-project.com/news/2017/08/09/hello-webassembly/)) that has been compiled to WebAssembly.
+Запуск .NET в браузере стал возможным благодаря относительно новой стандартизированной веб-технологии, называемой [WebAssembly](http://webassembly.org/). WebAssembly - это "переносимый, эффективный как по размеру так и по времени загрузки, подходящий для компиляции в веб". Код, скомпилированный в WebAssembly, может запускаться в любом браузере с нативными скоростями. Чтобы запустить исполняемые файлы .NET в веб-браузере, мы используем среду выполнения .NET (конкретно [Mono](http://www.mono-project.com/news/2017/08/09/hello-webassembly/)) которая была скомпилирована для WebAssembly.
 
-## Does Blazor compile my entire .NET-based app to WebAssembly?
+## Blazor скомпилирует мое приложение .NET в WebAssembly?
 
-No, a Blazor app consists of normal compiled .NET assemblies that are downloaded and run in a web browser using a WebAssembly-based .NET runtime. Only the .NET runtime itself is compiled to WebAssembly. That said, support for full [static ahead of time (AoT) compilation](http://www.mono-project.com/news/2018/01/16/mono-static-webassembly-compilation/) of the app to WebAssembly may be something we add further down the road.
+Нет, приложение Blazor состоит из обычных скомпилированных сборок .NET, которые загружаются и запускаются в веб-браузере с использованием среды выполнения .NET на основе WebAssembly. Только сама среда выполнения .NET компилируется в WebAssembly. Тем не менее, поддержка полной [статической досрочной (AoT) компиляции](http://www.mono-project.com/news/2018/01/16/mono-static-webassembly-compilation/) приложения в WebAssembly может быть добавлена в дальнейшем.
 
-## Wouldn't the app download size be huge if it also includes a .NET runtime?
+## Разве размер приложения для загрузки не будет огромным, если он также включает среду выполнения .NET?
 
-Not necessarily. .NET runtimes come in all shapes in sizes. Early Blazor prototypes used a compact .NET runtime (including assembly execution, garbage collection, threading) that compiled to a mere 60KB of WebAssembly. Blazor now runs on Mono, which is currently significantly larger. However, opportunities for size optimization abound, including merging and trimming the runtime and application binaries. Other potential download size mitigations include caching and using a CDN.
+Не обязательно. Среда выполнения .NET может иметь разные размеры. Ранние прототипы Blazor использовали компактную среду выполнения .NET (включая сборку, сборку мусора, потоковую обработку), которая составляла всего лишь 60 Кбайт WebAssembly. Теперь Blazor работает на Mono, который в настоящее время значительно больше. Тем не менее, возможностей для оптимизации размера достаточно, включая слияние и обрезку исполняемых файлов. Другие потенциальные ограничения размера загрузки могут быть решены через кэширование и использование CDN.
 
-## What features will Blazor support?
+## Какие функции поддерживает Blazor?
 
-Blazor will support all of the features of a modern single-page app framework:
+Blazor будет поддерживать все функции современного фреймворка для одностраничных приложений:
 
-* A component model for building composable UI
-* Routing
-* Layouts
-* Forms and validation
-* Dependency injection
-* JavaScript interop
-* Live reloading in the browser during development
-* Server-side rendering
-* Full .NET debugging both in browsers and in the IDE
-* Rich IntelliSense and tooling
-* Ability to run on older (non-WebAssembly) browsers via asm.js
-* Publishing and app size trimming
+* Компонентная модель для создания пользовательского интерфейса
+* Маршрутизация
+* Макеты
+* Формы и их валидация
+* Внедрение зависимости
+* Взаимодействие с JavaScript
+* Перезагрузка в браузере во время разработки
+* Обработка на стороне сервера
+* Полная отладка .NET как в браузерах, так и в среде IDE
+* IntelliSense и различные инструменты
+* Возможность запуска на старых (не WebAssembly) браузерах через asm.js
+* Публикация и настройка размера приложения
 
-## Can I use Blazor without running .NET on the server?
+## Можно ли использовать Blazor без запуска .NET на сервере?
 
-Yes, a Blazor app can be deployed as a set of static files without the need for any .NET support on the server.
+Да, приложение Blazor можно развернуть как набор статических файлов без необходимости поддержки .NET на сервере.
 
-## Can I use Blazor with ASP.NET Core on the server?
+## Могу ли я использовать Blazor с ASP.NET Core на сервере?
 
-Yes! Blazor optionally integrates with [ASP.NET Core](https://docs.microsoft.com/aspnet/core) to provide a seamless and consistent full-stack web development solution.
+Да! Blazor дополнительно интегрируется с [ASP.NET Core](https://docs.microsoft.com/aspnet/core) чтобы обеспечить бесшовное и последовательное решение для full-stack веб-разработки.
 
-## Is Blazor a .NET port of an existing JavaScript framework?
+## Является ли Blazor .NET-портом существующего JavaScript фреймворка?
 
-Blazor is a *new framework* inspired by existing modern single-page app frameworks, such as React, Angular, and Vue.
+Blazor - это *новый фреймворк*, вдохновлённый существующими современными фреймворками для одностраничных приложений, такими как React, Angular и Vue.
 
-## How can I try out Blazor?
+## Как я могу попробовать Blazor?
 
-To build your first Blazor web app check out our [getting started guide](xref:client-side/blazor/get-started).
+Чтобы создать свое первое веб-приложение Blazor, ознакомьтесь с нашим [руководством по началу работы](xref:client-side/blazor/get-started).
 
-## Why is Blazor an "experimental" project?
+## Почему Blazor является "экспериментальным" проектом?
 
-Blazor is an experimental project because there are still many questions to answer about its viability and appeal. The purposes of this initial experimental phase are to:
+Blazor - экспериментальный проект, потому что еще есть много вопросов, ответив на которые можно будет говорить о его жизнеспособности и целесообразности. Целью этой начальной экспериментальной фазы является:
 
-* Work through technical issues.
-* Gauge interest and to listen to feedback.
+* Проработать технические вопросы.
+* Оценить интерес и получить обратную связь.
 
-We're optimistic about Blazor's future; but at this time, Blazor isn't a committed product and should be considered pre-alpha.
+Мы оптимистично относимся к будущему Blazor; но в настоящее время он не является законченным продуктом и должен считаться пре-альфой.
 
-## Is this Silverlight all over again?
+## Этот снова Silverlight?
 
-No, Blazor is a .NET web framework based on HTML and CSS that runs in the browser using open web standards. It doesn't require a plugin, and it works on mobile devices and older browsers.
+Нет, Blazor - это веб-платформа .NET, основанная на HTML и CSS, которая работает в браузере с использованием открытых веб-стандартов. Он не требует плагина, и он работает на мобильных устройствах и старых браузерах.
 
 ## Does Blazor use XAML?
 
 No, Blazor is a web framework based on HTML, CSS, and other standard web technologies.
 
-## Is WebAssembly supported in all browsers?
+## Поддерживается ли WebAssembly во всех браузерах?
 
-Yes, WebAssembly has achieved cross-browser consensus and [all modern browsers now support WebAssembly](https://caniuse.com/#search=webassembly).
+Да, WebAssembly добилась кросс-браузерного консенсуса и [все современные браузеры теперь поддерживают WebAssembly](https://caniuse.com/#search=webassembly).
 
-## Does Blazor work on mobile browsers?
+## Работает ли Blazor в мобильных браузерах?
 
-Yes, [modern mobile browsers also support WebAssembly](https://caniuse.com/#search=webassembly).
+Да, [современные мобильные браузеры также поддерживают WebAssembly](https://caniuse.com/#search=webassembly).
 
-## What about older browsers that don't support WebAssembly? For example, does Blazor work in IE?
+## Что относительно старых браузеров, которые не поддерживают WebAssembly? Например, работает ли Blazor в IE?
 
-For older browsers that don't support WebAssembly, Blazor falls back to using an asm.js-based .NET runtime. Using asm.js is slower and has a larger download size but is still quite functional.
+Для старых браузеров, которые не поддерживают WebAssembly, Blazor возвращается к использованию среды выполнения .NET asm.js. Использование asm.js медленнее и имеет больший размер загрузки, но все еще довольно функционально.
 
-## Can I use .NET Standard libraries with Blazor?
+## Могу ли я использовать библиотеки .NET Standard с Blazor?
 
-Yes, the .NET runtime used for Blazor supports .NET Standard 2.0. APIs that aren't supported in the browser throw *Not Supported* exceptions.
+Да, среда выполнения .NET, используемая для Blazor, поддерживает .NET Standard 2.0. API, которые не поддерживаются в браузере, бросают *Not Supported* исключения.
 
-## Don't you need features like garbage collection and threading added to WebAssembly to make this work?
+## Вам не нужны функции, такие как сбор мусора и потоки, добавленные в WebAssembly?
 
-No, WebAssembly in its current state is sufficient. The .NET runtime handles its own garbage collection and threading concerns.
+Нет, WebAssembly в текущем состоянии достаточно. Среда выполнения .NET обрабатывает собственные проблемы сбора мусора и потоков.
 
-## Can I use existing JavaScript libraries with Blazor?
+## Могу ли я использовать существующие библиотеки JavaScript в Blazor?
 
-Yes, Blazor apps can call into JavaScript through JavaScript interop APIs.
+Да, приложения Blazor могут обращаться к JavaScript через API-интерфейсы JavaScript.
 
-## Can I access the DOM from a Blazor app?
+## Могу ли я получить доступ к DOM из приложения Blazor?
 
-You can access the DOM through JavaScript interop from .NET code. However, Blazor is a component-based framework that minimizes the need to access the DOM directly.
+Вы можете получить доступ к DOM через интерфейс JavaScript из кода .NET. Однако Blazor - это компонентная инфраструктура, которая минимизирует необходимость прямого доступа к DOM.
 
-## Why Mono? Why not .NET Core or CoreRT?
+## Почему Моно? Почему не .NET Core или CoreRT?
 
-[Mono](http://www.mono-project.com/) is a Microsoft-sponsored open source implementation of the .NET Framework. Mono is used by [Xamarin](https://www.xamarin.com/) to build native client apps for Android, iOS, and macOS. Xamarin is also used by [Unity](https://unity3d.com/) for game development. Microsoft's Xamarin team [announced their plans](http://www.mono-project.com/news/2017/08/09/hello-webassembly/) to add support for WebAssembly to Mono, and they've been making steady progress ([Mono and WebAssembly - Updates on Static Compilation 1/16/2018](http://www.mono-project.com/news/2018/01/16/mono-static-webassembly-compilation/)). Because Blazor is a client-side web UI framework targeted at WebAssembly, Mono is a natural fit.
+[Mono](http://www.mono-project.com/) является спонсируемой Microsoft реализация .NET Framework  с открытым исходным кодом. Моно используется в [Xamarin](https://www.xamarin.com/) для создания клиентских приложений для Android, iOS и macOS. Xamarin также используется [Unity](https://unity3d.com/) для разработки игр. Команда Microsoft Xamarin [объявили о своих планах](http://www.mono-project.com/news/2017/08/09/hello-webassembly/) добавить поддержку для WebAssembly в Mono, и они добились устойчивого прогресса ([Mono и WebAssembly - Обновления на статической компиляции 1/16/2018](http://www.mono-project.com/news/2018/01/16/mono-static-webassembly-compilation/)). Поскольку Blazor - это веб-интерфейс пользовательского интерфейса на стороне клиента, ориентированный на WebAssembly, Mono - лучший выбор.
 
-By comparison, [.NET Core](https://www.microsoft.com/net/learn/get-started/windows) is primarily used for server apps and for cross-platform console apps. .NET Core can be used for creating an ASP.NET Core backend for a Blazor app but not for building the client app itself. [CoreRT](https://github.com/dotnet/corert) is a .NET Core runtime optimized for AoT compilation; and while it has WebAssembly aspirations, the project is still a work-in-progress and not a shipping product.
+[.NET Core](https://www.microsoft.com/net/learn/get-started/windows) в основном используется для серверных приложений и для кросс-платформенных консольных приложений. .NET Core можно использовать для создания бэкэнда для ASP.NET Core приложения Blazor, но не для создания самого клиентского приложения. [CoreRT](https://github.com/dotnet/corert) - это среда .NET Core, оптимизированная для компиляции AoT; и, хотя у него есть придыхание WebAssembly, проект по-прежнему остается незавершенным, его нельзя использовать в `production` проектах.
 
-## Where did the name "Blazor" come from?
+## Откуда взялось название
 
-Blazor makes heavy use of [Razor](https://docs.microsoft.com/aspnet/core/mvc/views/razor?view=aspnetcore-2.1), a markup syntax for HTML and C#. **Browser + Razor = Blazor!** When pronounced, it's also the name of a swanky jacket worn by hipsters that have excellent taste in fashion, style, and programming languages.
+Blazor активно использует [Razor](https://docs.microsoft.com/aspnet/core/mvc/views/razor?view=aspnetcore-2.1), синтаксис разметки для HTML и C#. **Browser + Razor = Blazor!** Когда произносится, это также название шикарной куртки, которую носят хипстеры, которые имеют отличный вкус в моде, стиле и языках программирования.

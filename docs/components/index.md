@@ -192,9 +192,9 @@ uid: client-side/blazor/components/index
 
 ## Обработка событий
 
-Blazor provides event handling features. For an HTML element attribute named `on<event>` (for example, `onclick`, `onsubmit`) with a delegate-typed value, Blazor treats the attribute's value as an event handler. The attribute's name always starts with `on`.
+Blazor предоставляет функции обработки событий. Имя аттрибута HTML элемента будет вида `on<event>` (например, `onclick`, `onsubmit`) с заданным значением делегата, Blazor рассматривает значение атрибута как обработчик события. Имя атрибута всегда начинается с `on`.
 
-The following code calls the `UpdateHeading` method when the button is selected in the UI:
+В следующем коде вызывается метод `UpdateHeading` когда нажимается кнопка в пользовательском интерфейсе:
 
 ```cshtml
 <button class="btn btn-primary" onclick="@UpdateHeading">
@@ -209,7 +209,7 @@ The following code calls the `UpdateHeading` method when the button is selected 
 }
 ```
 
-The following code calls the `CheckboxChanged` method when the check box is changed in the UI:
+Следующий код вызывает метод `CheckboxChanged` когда используется флажок(check box) в пользовательском интерфейсе:
 
 ```cshtml
 <input type="checkbox" class="form-check-input" onchange="@CheckboxChanged" />
@@ -222,24 +222,24 @@ The following code calls the `CheckboxChanged` method when the check box is chan
 }
 ```
 
-For some events, event-specific event argument types are permitted. If access to one of these event types isn't necessary, it isn't required in the method call.
+Для некоторых событий поддерживаются типы аргументов событий. Если доступ к одному из этих типов событий не требуется, он не требуется в вызове метода.
 
-The list of supported event arguments is:
+Список поддерживаемых агрументов событий:
 
 * UIEventArgs
 * UIChangeEventArgs
 * UIKeyboardEventArgs
 * UIMouseEventArgs
 
-Lambda expressions can also be used:
+Лямбда-выражения также могут быть использованы:
 
 ```cshtml
 <button onclick="@(e => Console.WriteLine("Hello, world!"))">Say hello</button>
 ```
 
-## Lifecycle methods
+## Жизненный цикл методов
 
-`OnInitAsync` and `OnInit` execute code after the component has been initialized. To perform an asynchronous operation, use `OnInitAsync` and use the `await` keyword:
+`OnInitAsync` и `OnInit` выполняются после того как компонент был инициализирован. Для выполнения асинхронной операции используйте `OnInitAsync` и используется ключевое слово `await`:
 
 ```csharp
 protected override async Task OnInitAsync()
@@ -248,7 +248,7 @@ protected override async Task OnInitAsync()
 }
 ```
 
-For a synchronous operation, use `OnInit`:
+Для синхронных операций используйте `OnInit`:
 
 ```csharp
 protected override void OnInit()
@@ -257,7 +257,7 @@ protected override void OnInit()
 }
 ```
 
-`OnParametersSetAsync` and `OnParametersSet` are called when a component has received parameters from its parent and the values are assigned to properties. These methods are executed after `OnInit` during component initialization.
+`OnParametersSetAsync` и `OnParametersSet` вызывается, когда компонент получает параметры от своего родителя, а значения присваиваются свойствам. Эти методы выполняются после `OnInit` во время инициализации компонента.
 
 ```csharp
 protected override async Task OnParametersSetAsync()
@@ -273,7 +273,7 @@ protected override void OnParametersSet()
 }
 ```
 
-`OnAfterRenderAsync` and `OnAfterRender` are called each time after a component has finished rendering. Element and component references are populated at this point. Use this stage to perform additional initialization steps using the rendered content, such as activating third-party JavaScript libraries that operate on the rendered DOM elements.
+`OnAfterRenderAsync` и `OnAfterRender` вызывается каждый раз после завершения обработки компонента. В этот момент заполняются ссылки на элементы и компоненты. Используйте этот этап для выполнения дополнительных шагов инициализации с использованием визуализированного контента, такого как активация сторонних библиотек JavaScript, которые работают с отображаемыми элементами DOM.
 
 ```csharp
 protected override async Task OnAfterRenderAsync()
@@ -289,7 +289,7 @@ protected override void OnAfterRender()
 }
 ```
 
-`SetParameters` can be overridden to execute code before parameters are set:
+`SetParameters` может быть переопределено для выполнения кода до того, как будут установлены параметры:
 
 ```csharp
 public override void SetParameters(ParameterCollection parameters)
@@ -300,9 +300,9 @@ public override void SetParameters(ParameterCollection parameters)
 }
 ```
 
-If `base.SetParameters` isn't invoked, the custom code can interpret the incoming parameters value in any way required. For example, the incoming parameters aren't required to be assigned to the properties on the class.
+Если `base.SetParameters` не вызывается, пользовательский код может интерпретировать значение входящих параметров любым способом. Например, входящие параметры не требуются для назначения свойств класса.
 
-`ShouldRender` can be overridden to suppress refreshing of the UI. If the implementation returns `true`, the UI is refreshed. Even if `ShouldRender` is overridden, the component is always initially rendered.
+`ShouldRender` может быть переопределен для подавления обновления пользовательского интерфейса. Если реализация возвращает `true`, пользовательский интерфейс обновляется. Даже если `ShouldRender` переопределен, компонент всегда отображается.
 
 ```csharp
 protected override bool ShouldRender()
@@ -313,9 +313,9 @@ protected override bool ShouldRender()
 }
 ```
 
-## Component disposal with IDisposable
+## Утилизация компонентов с IDisposable
 
-If a component implements [IDisposable](https://docs.microsoft.com/dotnet/api/system.idisposable), the [Dispose method](https://docs.microsoft.com/dotnet/standard/garbage-collection/implementing-dispose) is called when the component is removed from the UI. The following component uses `@implements IDisposable` and the `Dispose` method:
+Если компонент реализует [IDisposable](https://docs.microsoft.com/dotnet/api/system.idisposable), [Dispose метод](https://docs.microsoft.com/dotnet/standard/garbage-collection/implementing-dispose) вызывается когда компонент удаляется из пользовательского интерфейса. Следующий компонент использует `@implements IDisposable` и метод `Dispose`:
 
 ```csharp
 @using System
@@ -331,31 +331,31 @@ If a component implements [IDisposable](https://docs.microsoft.com/dotnet/api/sy
 }
 ```
 
-## Routing
+## Маршрутизация
 
-Routing in Blazor is achieved by providing a route template to each accessible component in the app.
+Маршрутизация в Blazor достигается путем предоставления шаблона маршрута каждому доступному компоненту в приложении.
 
-When a *\*.cshtml* file with an `@page` directive is compiled, the generated class is given a [RouteAttribute](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.routeattribute) specifying the route template. At runtime, the router looks for component classes with a `RouteAttribute` and renders whichever component has a route template that matches the requested URL.
+Когда файл *\*.cshtml* с директивой `@page` компилируется, порождённому классу даётся [RouteAttribute](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.routeattribute) задавая шаблон моршрута. Во время выполнения маршрутизатор ищет классы компонентов с атрибутом `RouteAttribute` и отображает тот, какой имеет шаблон маршрута, соответствующий запрашиваемому URL.
 
-Multiple route templates can be applied to a component. The following component responds to requests for `/BlazorRoute` and `/DifferentBlazorRoute`:
+К компоненту могут применяться несколько шаблонов маршрутов. Следующий компонент отвечает на запросы `/BlazorRoute` и `/DifferentBlazorRoute`:
 
 [!code-cshtml[](../common/samples/2.x/BlazorSample/Pages/BlazorRoute.cshtml?start=1&end=4)]
 
-## Route parameters
+## Параметры маршрута
 
-Blazor components can receive route parameters from the route template provided in the `@page` directive. The Blazor client-side router uses route parameters to populate the corresponding component parameters.
+Компоненты Blazor могут получать параметры из шаблона маршрута, указанного в директиве `@page`. Blazor использует параметры маршрута для заполнения соответствующих параметров компонента.
 
 *RouteParameter.cshtml*:
 
 [!code-cshtml[](../common/samples/2.x/BlazorSample/Pages/RouteParameter.cshtml?start=1&end=9)]
 
-Optional parameters aren't supported, so two `@page` directives are applied in the example above. The first permits navigation to the component without a parameter. The second `@page` directive takes the `{text}` route parameter and assigns the value to the `Text` property.
+Необязательные параметры не поддерживаются, поэтому в приведенном выше примере применяются две директивы `@page`. Первая разрешает навигацию к компоненту без параметра. Вторая директива `@page` принимает параметр`{text}` и присваивает значение свойству `Text` компонента.
 
-## Base class inheritance for a "code-behind" experience
+## Наследование базового класса для "Раздельного кода"(code-behind)
 
-Blazor component files (*\*.cshtml*) mix HTML markup and C# processing code in the same file. The `@inherits` directive can be used to provide Blazor with a "code-behind" experience that separates component markup from processing code.
+Файлы компонентов Blazor (*\*.cshtml*) содержат HTML-разметку и код обработки C# в том же файле. Директива `@inherits` может быть использована для обеспечения Blazor возможностей "Раздельного кода"(code-behind), позволяя отделять разметку компонентов от кода обработки.
 
-The [sample app](https://github.com/aspnet/Blazor.Docs/tree/master/docs/common/samples/) shows how a component can inherit a base class, `BlazorRocksBase`, to provide the component's properties and methods.
+[Пример приложения](https://github.com/aspnet/Blazor.Docs/tree/master/docs/common/samples/) показывающего, как компонент может наследовать базовый класс `BlazorRocksBase`, для предоставления свойств и методов компонента.
 
 *BlazorRocks.cshtml*:
 
@@ -365,30 +365,30 @@ The [sample app](https://github.com/aspnet/Blazor.Docs/tree/master/docs/common/s
 
 [!code-csharp[](../common/samples/2.x/BlazorSample/Pages/BlazorRocksBase.cs)]
 
-The base class should derive from [BlazorComponent](/api/Microsoft.AspNetCore.Blazor.Components.BlazorComponent.html).
+Базовый класс должен быть получен из [BlazorComponent](/api/Microsoft.AspNetCore.Blazor.Components.BlazorComponent.html).
 
-## Razor support
+## Поддержка Razor
 
-**Razor directives**
+**Директивы Razor**
 
-Razor directives active with Blazor apps are shown in the following table.
+Директивы Razor, совместимые с приложениями Blazor, показаны в следующей таблице.
 
-| Directive | Description |
+| Директива | Описание |
 | --------- | ----------- |
-| [@functions](https://docs.microsoft.com/aspnet/core/mvc/views/razor#functions) | Adds a C# code block to a component. |
-| `@implements` | Implements an interface for the generated component class. |
-| [@inherits](https://docs.microsoft.com/aspnet/core/mvc/views/razor#inherits) | Provides full control of the class that the component inherits. |
-| [@inject](https://docs.microsoft.com/aspnet/core/mvc/views/razor#inject) | Enables service injection from the [service container](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection). For more information, see [Dependency injection into views](https://docs.microsoft.com/aspnet/core/mvc/views/dependency-injection). |
-| `@layout` | Specifies a layout component. Layout components are used to avoid code duplication and inconsistency. |
-| [@page](https://docs.microsoft.com/aspnet/core/mvc/razor-pages#razor-pages) | Specifies that the component should handle requests directly. The `@page` directive can be specified with a route and optional parameters. Unlike Razor Pages, the `@page` directive doesn't need to be the first directive at the top of the file. For more information, see [Routing](xref:client-side/blazor/routing). |
-| [@using](https://docs.microsoft.com/aspnet/core/mvc/views/razor#using) | Adds the C# `using` directive to the generated component class. |
-| [@addTagHelper](https://docs.microsoft.com/aspnet/core/mvc/views/razor#tag-helpers) | Use `@addTagHelper` to use a component in a different assembly than the app's assembly. |
+| [@functions](https://docs.microsoft.com/aspnet/core/mvc/views/razor#functions) | Добавляет блок C# кода к компоненту.|
+| `@implements` | Реализует интерфейс для класса сгенерированных компонентов. |
+| [@inherits](https://docs.microsoft.com/aspnet/core/mvc/views/razor#inherits) | Обеспечивает полный контроль над классом, который наследует компонент. |
+| [@inject](https://docs.microsoft.com/aspnet/core/mvc/views/razor#inject) | Включает инъекцию сервиса из [сервисного контейнера](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection). Для дополнительной информации смотрите [Вложение зависимостей в представления](https://docs.microsoft.com/aspnet/core/mvc/views/dependency-injection). |
+| `@layout` | Задает компонент макета. Компоненты макета используются, чтобы избежать дублирования кода и несогласованности. |
+| [@page](https://docs.microsoft.com/aspnet/core/mvc/razor-pages#razor-pages) | Указывает, что компонент должен обрабатывать запросы. Директива `@page` может задавать маршрут и дополнительные параметры. В отличие от `Razor Pages` директива `@page` не должна быть первой директивой в верхней части файла. Дополнительную информацию смотрите в разделе [Маршрутизация](xref:client-side/blazor/routing). |
+| [@using](https://docs.microsoft.com/aspnet/core/mvc/views/razor#using) | Добавляет C# директиву `using` в класс сгенерированных компонентов. |
+| [@addTagHelper](https://docs.microsoft.com/aspnet/core/mvc/views/razor#tag-helpers) | Используйте `@addTagHelper`, чтобы использовать компонент в сборке отличной от сборки приложения. |
 
-**Conditional attributes**
+**Условные атрибуты**
 
-Blazor conditionally renders attributes based on the .NET value. If the value is `false` or `null`, Blazor won't render the attribute. If the value is `true`, the attribute is rendered minimized.
+Blazor условно отображает атрибуты на основе .NET значения. Если значение `false` или `null`, Blazor не будет отображать атрибут. Если значение `true`, атрибут визуализируется с минимальным значением.
 
-In the following example, `IsCompleted` determines if `checked` is rendered in the control's markup.
+В следующем примере, `IsCompleted` определяет будет ли `checked` отображаться в разметке элемента управления.
 
 ```cshtml
 <input type="checkbox" checked="@IsCompleted" />
@@ -399,30 +399,30 @@ In the following example, `IsCompleted` determines if `checked` is rendered in t
 }
 ```
 
-If `IsCompleted` is `true`, the check box is rendered as:
+Если `IsCompleted` равно `true`, флажок отображается как:
 
 ```html
 <input type="checkbox" checked />
 ```
 
-If `IsCompleted` is `false`, the check box is rendered as:
+Если `IsCompleted` равно `false`, тогда флажок будет отображаться как:
 
 ```html
 <input type="checkbox" />
 ```
 
-**Additional information on Razor**
+**Дополнительная информация о Razor**
 
-For more information on Razor, see the [Razor syntax reference](https://docs.microsoft.com/aspnet/core/mvc/views/razor). Note that not all of the features of Razor are available in Blazor at this time.
+Для получения дополнительной информации о Razor смотрите [Ссылка на синтаксис Razor](https://docs.microsoft.com/aspnet/core/mvc/views/razor). Обратите внимание, что не все функции Razor доступны в Blazor в настоящее время.
 
-## Raw HTML
+## Необработанный HTML
 
-Blazor normally renders strings using DOM text nodes, which means that any markup they may contain is ignored and treated as literal text. To render raw HTML, wrap the HTML content in a `MarkupString` value, which is then parsed as HTML or SVG and inserted into the DOM.
+Blazor обычно передает строки с использованием текстовых узлов DOM, что означает, что любая их разметка игнорируется и обрабатывается как литерал. Чтобы сделать необработанный HTML, оберните содержимое HTML в значение `MarkupString`, которое затем анализируется как HTML или SVG и вставляется в DOM.
 
 > [!WARNING]
-> Rendering raw HTML constructed from any untrusted source is a **security risk** and should be avoided!
+> Предоставление необработанного HTML, из любого ненадежного источника, является **риском безопасности**, и его следует избегать!
 
-The following example shows using the `MarkupString` type to add a block of static HTML content to the rendered output of a component:
+В следующем примере показано использование типа `MarkupString` для добавления блока статического HTML в отображаемых данных компонента:
 
 ```html
 @((MarkupString)myMarkup)

@@ -1,7 +1,7 @@
 ---
-title: Blazor layouts
+title: Макеты Blazor
 author: rstropek
-description: Learn how to create reusable layout components for Blazor apps.
+description: Узнайте, как создавать повторно используемые макеты компонентов для приложений Blazor.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -11,22 +11,22 @@ ms.technology: aspnet
 ms.topic: article
 uid: client-side/blazor/layouts
 ---
-# Blazor layouts
+# Макеты Blazor
 
-By [Rainer Stropek](https://www.timecockpit.com)
+От [Rainer Stropek](https://www.timecockpit.com)
 
 [!INCLUDE[](~/includes/blazor-preview-notice.md)]
 
-Blazor apps typically contain more than one page. Layout elements, such as menus, copyright messages, and logos, must be present on all pages. Copying the code of these layout elements into all of the pages of an app isn't an efficient solution. Such duplication is hard to maintain and probably leads to inconsistent content over time. *Layouts* solve this problem.
+Приложения Blazor обычно содержат более одной страницы. Элементы макета, такие как меню, сообщения об авторских правах и логотипы, должны присутствовать на всех страницах. Копирование кода этих элементов на все страницы приложения не является эффективным решением. Такое дублирование трудно поддерживать и, вероятно, приводит к несогласованному контенту с течением времени. *Макеты* решают эту проблему.
 
-## What are layouts?
+## Что такое макеты?
 
-Technically, a layout is just another Blazor component. A layout is defined in a Razor template or in C# code and can contain data binding, dependency injection, and other ordinary features of components. Two additional aspects turn a *component* into a *layout*:
+Технически, макет - это еще один компонент Blazor. Макет определяется в шаблоне Razor или в коде C# и может содержать привязку данных, инъекцию зависимостей и другие обычные функции компонентов. Два дополнительных аспекта превращают *компонент* в *макет*:
 
-* The layout component must inherit from [BlazorLayoutComponent](/api/Microsoft.AspNetCore.Blazor.Layouts.BlazorLayoutComponent.html). `BlazorLayoutComponent` defines a `Body` property that contains the content to be rendered inside the layout.
-* The layout component uses the `Body` property to specify where the body content should be rendered using the Razor syntax `@Body`. During rendering, `@Body` is replaced by the content of the layout.
+* Компонент макета должен наследоваться от [BlazorLayoutComponent](/api/Microsoft.AspNetCore.Blazor.Layouts.BlazorLayoutComponent.html). `BlazorLayoutComponent` определяет свойство `Body` которое содержит содержимое, которое будет отображаться внутри макета.
+* Компонент макета использует свойство `Body`, чтобы указать, где должно отображаться содержимое тела с использованием синтаксиса Razor `@Body`. Во время рендеринга `@Body` заменяется содержимым макета.
 
-The following code sample shows the Razor template of a layout component. Note the use of `BlazorLayoutComponent` and `@Body`:
+В следующем примере кода показан шаблон Razor компонента макета. Обратите внимание на использование `BlazorLayoutComponent` и `@Body`:
 
 ```csharp
 @inherits BlazorLayoutComponent
@@ -53,11 +53,11 @@ The following code sample shows the Razor template of a layout component. Note t
 }
 ```
 
-## Use a layout in a component
+## Использование макета в компоненте
 
-Use the Razor directive `@layout` to apply a layout to a component. The compiler converts this directive into a [LayoutAttribute](/api/Microsoft.AspNetCore.Blazor.Layouts.LayoutAttribute.html), which is applied to the component class.
+Используйте директиву Razor `@layout` для применения макета к компоненту. Компилятор преобразует эту директиву в [LayoutAttribute](/api/Microsoft.AspNetCore.Blazor.Layouts.LayoutAttribute.html), который применяется к классу компонентов.
 
-The following code sample demonstrates the concept. The content of this component is inserted into the *MasterLayout* at the position of `@Body`:
+Следующий пример кода демонстрирует концепцию. Содержимое этого компонента вставляется в *MasterLayout* в позицию `@Body`:
 
 ```csharp
 @layout MasterLayout
@@ -68,17 +68,17 @@ The following code sample demonstrates the concept. The content of this componen
 ...
 ```
 
-## Centralized layout selection
+## Централизованный выбор макета
 
-Every folder of a Blazor app can optionally contain a template file named *_ViewImports.cshtml*. The compiler includes the directives specified in the view imports file in all of the Razor templates in the same folder and recursively in all of its subfolders. Therefore, a *_ViewImports.cshtml* file containing `@layout MainLayout` ensures that all of the components in a folder use the *MainLayout* layout. There's no need to repeatedly add `@layout` to all of the *\*.cshtml* files.
+Каждая папка приложения Blazor может дополнительно содержать файл шаблона с именем *_ViewImports.cshtml*. Компилятор включает директивы, указанные в файле импорта, во всех шаблонах Razor в той же папке и рекурсивно во всех своих подпапках. Следовательно, файл *_ViewImports.cshtml*, содержащий `@layout MainLayout`, гарантирует, что все компоненты в папке используют макет *MainLayout*. Нет необходимости повторно добавлять `@layout` во все файлы *\*.cshtml*.
 
-Note that the default template for Blazor apps uses the *_ViewImports.cshtml* mechanism for layout selection. A newly created app contains the *_ViewImports.cshtml* file in the *Pages* folder.
+Обратите внимание, что шаблон по умолчанию для приложений Blazor использует механизм *_ViewImports.cshtml* для выбора макета. Новое созданное приложение содержит файл *_ViewImports.cshtml* в папке *Pages*.
 
-## Nested layouts
+## Вложенные макеты
 
-Blazor apps can consist of nested layouts. A component can reference a layout which in turn references another layout. For example, nesting layouts can be used to reflect a multi-level menu structure.
+Приложения Blazor могут состоять из вложенных макетов. Компонент может ссылаться на макет, который, в свою очередь, ссылается на другой макет. Например, макеты вложенности могут использоваться для отражения многоуровневой структуры меню.
 
-The following code samples show how to use nested layouts. The *CustomersComponent.cshtml* file is the component to display. Note that the component references the layout `MasterDataLayout`.
+В следующих примерах кода показано, как использовать вложенные макеты. Файл *CustomersComponent.cshtml* является отображаемым компонентом. Обратите внимание, что компонент ссылается на макет `MasterDataLayout`.
 
 *CustomersComponent.cshtml*:
 
@@ -91,7 +91,7 @@ The following code samples show how to use nested layouts. The *CustomersCompone
 ...
 ```
 
-The *MasterDataLayout.cshtml* file provides the `MasterDataLayout`. The layout references another layout, `MainLayout`, where it's going to be embedded.
+Файл *MasterDataLayout.cshtml* обеспечивает `MasterDataLayout`. Макет ссылается на другой макет `MainLayout`, там, где он будет встроен.
 
 *MasterDataLayout.cshtml*:
 
@@ -107,7 +107,7 @@ The *MasterDataLayout.cshtml* file provides the `MasterDataLayout`. The layout r
 @Body
 ```
 
-Finally, `MainLayout` contains the top-level layout elements, such as the header, footer, and main menu.
+Наконец, `MainLayout` содержит элементы макета верхнего уровня, такие как верхний колонтитул, нижний колонтитул и главное меню.
 
 *MainLayout.cshtml*:
 
