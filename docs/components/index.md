@@ -23,14 +23,14 @@ uid: client-side/blazor/components/index
 
 ## Классы компонентов
 
-Blazor components are typically implemented in *\*.cshtml* files using a combination of C# and HTML markup. The UI for a component is defined using HTML. Dynamic rendering logic (for example, loops, conditionals, expressions) is added using an embedded C# syntax called [Razor](https://docs.microsoft.com/aspnet/core/mvc/views/razor). When a Blazor app is compiled, the HTML markup and C# rendering logic are converted into a component class. The name of the generated class matches the name of the file.
+Компоненты Blazor обычно определяются в *\*.cshtml* файлах и используют комбинацию C# и HTML разметки. Внешний вид компонента определяется с помощью использования HTML. Динамическая логика визуализации (например, циклы, условия, выражения) добавляется с использованием встроенного синтаксиса C# [Razor](https://docs.microsoft.com/aspnet/core/mvc/views/razor). Когда приложение Blazor скомпилировано, HTML-разметка и логика отображения C# преобразуются в класс компонентов. Имя сгенерированного класса соответствует имени файла.
 
-Members of the component class are defined in a `@functions` block (more than one `@functions` block is permissible). In the `@functions` block, component state (properties, fields) is specified along with methods for event handling or for defining other component logic.
+Члены класса компонента определены в блоке `@functions` (допускается больше одного блока`@functions`). В блоке`@functions`, компоненты состояния (свойства, поля) задаются вместе с методами обработки событий или для определения другой логики компонента.
 
-Component members can then be used as part of the component's rendering logic using C# expressions that start with `@`. For example, a C# field is rendered by prefixing `@` to the field name. The following example evaluates and renders:
+Члены компонента затем могут использоваться как часть логики рендеринга компонента с использованием выражений C#, которые начинаются с `@`. Например, поле C# определяется префиксом `@` к имени поля. Следующий пример демонстрирует, как это работает:
 
-* `_headingFontStyle` to the CSS property value for `font-style`.
-* `_headingText` to the content of the `<h1>` element.
+* `_headingFontStyle` к значению свойства CSS для `font-style`.
+* `_headingText` к содержанию элемента `<h1>`.
 
 ```cshtml
 <h1 style="font-style:@_headingFontStyle">@_headingText</h1>
@@ -41,21 +41,21 @@ Component members can then be used as part of the component's rendering logic us
 }
 ```
 
-After the component is initially rendered, the component regenerates its render tree in response to events. Blazor then compares the new render tree against the previous one and applies any modifications to the browser's Document Object Model (DOM).
+После первоначальной визуализации компонента компонент регенерирует дерево рендеринга в ответ на события. Затем Blazor сравнивает новое дерево рендеринга с предыдущим и применяет любые изменения в Document Object Model (DOM) браузера.
 
-## Using components
+## Использование компонентов
 
-Components can include other components by declaring them using HTML element syntax. The markup for using a component looks like an HTML tag where the name of the tag is the component type.
+Компоненты могут включать другие компоненты, объявляя их с помощью синтаксиса элемента HTML. Разметка для использования компонента выглядит как тег HTML, где имя тега является типом компонента.
 
-The following markup renders a `HeadingComponent` (*HeadingComponent.cshtml*) instance:
+Следующая разметка отображает пример `HeadingComponent` (*HeadingComponent.cshtml*):
 
 [!code-cshtml[](../common/samples/2.x/BlazorSample/Pages/Index.cshtml?start=11&end=11)]
 
-## Component parameters
+## Параметры компонента
 
-Components can have *component parameters*, which are defined using *non-public* properties on the component class decorated with `[Parameter]`. Use attributes to specify arguments for a component in markup.
+Компоненты могут иметь *параметры компонента*, которые определяются с помощью *непубличных* свойств класса компонентов, помеченный аттрибутом `[Parameter]`. Используйте атрибуты для указания аргументов компонента в разметке.
 
-In the following example, the `ParentComponent` sets the value of the `Title` property of the `ChildComponent`:
+В следующем примере, на странице `ParentComponent` задаётся значение свойства `Title` компонента `ChildComponent`:
 
 *ParentComponent.cshtml*:
 
@@ -65,47 +65,47 @@ In the following example, the `ParentComponent` sets the value of the `Title` pr
 
 [!code-cshtml[](../common/samples/2.x/BlazorSample/Pages/ChildComponent.cshtml?highlight=7-8)]
 
-## Child content
+## Дочерний контент
 
-Components can set the content in another component. The assigning component provides the content between the tags that specify the receiving component. For example, a `ParentComponent` can provide content that is to be rendered by a `ChildComponent` by placing the content inside **\<ChildComponent>** tags.
+Компоненты могут устанавливать контент в другом компоненте. Назначающий компонент предоставляет контент между тегами, которые определяет принимающий компонент. Намример, компонент `ParentComponent` может предоставлять контент, который должен быть в компоненте `ChildComponent` путем размещения содержимого внутри тега **\<ChildComponent>**.
 
 *ParentComponent.cshtml*:
 
 [!code-cshtml[](../common/samples/2.x/BlazorSample/Pages/ParentComponent.cshtml?start=1&end=7&highlight=6)]
 
-The child component has a `ChildContent` property that represents a [RenderFragment](/api/Microsoft.AspNetCore.Blazor.RenderFragment.html). The value of `ChildContent` is positioned in the child component's markup where the content should be rendered. In the following example, the value of `ChildContent` is received from the parent component and rendered inside the Bootstrap panel's `panel-body`.
+Дочерний компонент содержит свойство `ChildContent` которое представляет [RenderFragment](/api/Microsoft.AspNetCore.Blazor.RenderFragment.html). Значение `ChildContent` позиционируется в разметке дочернего компонента, где должен отображаться контент. В следующем примере, значение `ChildContent` передаётся из родительского компонента и отображается внутри панели Bootstrap `panel-body`.
 
 *ChildComponent.cshtml*:
 
 [!code-cshtml[](../common/samples/2.x/BlazorSample/Pages/ChildComponent.cshtml?highlight=3,10-11)]
 
 > [!NOTE]
-> The property receiving the `RenderFragment` content must be named `ChildContent` by convention.
+> Свойство получающее контент `RenderFragment` должно быть названо `ChildContent` условно.
 
-## Data binding
+## Связывание данных
 
-Data binding to both components and DOM elements is accomplished with the `bind` attribute. The following example binds the `ItalicsCheck` property to the check box's checked state:
+Связывание даннх компонента и элементов DOM происходит с помощью аттрибута `bind`. Следующий пример демонстрирует связывание свойства `ItalicsCheck` и флажок (check box):
 
 ```cshtml
 <input type="checkbox" class="form-check-input" id="italicsCheck" bind="@_italicsCheck" />
 ```
 
-When the check box is selected and cleared, the property's value is updated to `true` and `false`, respectively.
+Когда флажок установлен или убран, значение свойства меняется на `true` или `false` соответственно.
 
-The check box is updated in the UI only when the component is rendered, not in response to changing the property's value. Since components render themselves after event handler code executes, property updates are usually reflected in the UI immediately.
+Флажок обновляется в пользовательском интерфейсе только тогда, когда компонент отображается, а не в ответ на изменение значения свойства. Поскольку компоненты отображают себя после выполнения кода обработчика событий, обновления свойств немедленно отражаются в пользовательском интерфейсе.
 
-Using `bind` with a `CurrentValue` property (`<input bind="@CurrentValue" />`) is essentially equivalent to the following:
+Используйте `bind` со свойством `CurrentValue` (`<input bind="@CurrentValue" />`) это будет эквивалентно следующему:
 
 ```cshtml
 <input value="@CurrentValue" 
     onchange="@((UIValueEventArgs __e) => CurrentValue = __e.Value)" />
 ```
 
-When the component is rendered, the `value` of the input element comes from the `CurrentValue` property. When the user types in the text box, the `onchange` is fired and the `CurrentValue` property is set to the changed value. In reality, the code generation is a little more complex because `bind` deals with a few cases where type conversions are performed. In principle, `bind` associates the current value of an expression with a `value` attribute and handles changes using the registered handler.
+Когда компонент отображает `value` элемента ввода из свойства `CurrentValue`. Когда пользователь вводит данные в текстовое поле запускается `onchange` и свойство `CurrentValue` устанавливается на изменённое значение. На самом деле генерация кода немного сложнее, потому что `bind` имеет дело с несколькими случаями, когда выполняются преобразования типов. В принципе, `bind` связывает текущее значение выражения с атрибутом` value` и обрабатывает изменения с помощью зарегистрированного обработчика.
 
-**Format strings**
+**Форматирование строк**
 
-Data binding works with [DateTime](https://docs.microsoft.com/dotnet/api/system.datetime) format strings (but not other format expressions at this time, such as currency or number formats):
+Связывание данных работает с [DateTime](https://docs.microsoft.com/dotnet/api/system.datetime) форматом строк (но не для других, таких как формат валют или чисел):
 
 ```cshtml
 <input bind="@StartDate" format-value="yyyy-MM-dd" />
@@ -116,15 +116,15 @@ Data binding works with [DateTime](https://docs.microsoft.com/dotnet/api/system.
 }
 ```
 
-The `format-value` attribute specifies the date format to apply to the `value` of the `input` element. The format is also used to parse the value when an `onchange` event occurs.
+Аттрибут `format-value` определяет формат даты для задания `value` элемента `input`. Формат также используется для анализа значения, когда происходит событие `onchange`.
 
-**Component parameters**
+**Параметры компонента**
 
-Binding also recognizes component parameters, where `bind-{property}` can bind a property value across components.
+Связывание также распознает параметры компонента, где `bind-{property}` может связывать значение свойства между компонентами.
 
-The following component uses `ChildComponent` and binds the `ParentYear` parameter from the parent to the `Year` parameter on the child component:
+Следующий компонет использует компонент `ChildComponent` и связывает параметр `ParentYear` из родительского компонента с параметром `Year` из дочернего компонента:
 
-Parent component:
+Родительский компонент:
 
 ```cshtml
 @page "/ParentComponent"
@@ -148,7 +148,7 @@ Parent component:
 }
 ```
 
-Child component:
+Дочерний компонент:
 
 ```cshtml
 <h2>Child Component</h2>
@@ -164,9 +164,9 @@ Child component:
 }
 ```
 
-The `Year` parameter is bindable because it has a companion `YearChanged` event that matches the type of the `Year` parameter.
+Параметр `Year` является связующим, потому что он имеет событие `YearChanged`, которое соответствует типу параметра `Year`.
 
-Loading the `ParentComponent` produces the following markup:
+Загрузка компонента `ParentComponent` производит следующую разметку:
 
 ```html
 <h1>Parent Component</h1>
@@ -178,7 +178,7 @@ Loading the `ParentComponent` produces the following markup:
 <p>Year: 1978</p>
 ```
 
-If the value of the `ParentYear` property is changed by selecting the button in the `ParentComponent`, the `Year` property of the `ChildComponent` is updated. The new value of `Year` is rendered in the UI when the `ParentComponent` is rerendered:
+Если значение свойства `ParentYear` изменяется путем выбора кнопки в `ParentComponent`, свойство `Year` компонента `ChildComponent` обновляется. Новое значение `Year` отображается в пользовательском интерфейсе когда `ParentComponent` перезагрузится:
 
 ```html
 <h1>Parent Component</h1>
@@ -190,7 +190,7 @@ If the value of the `ParentYear` property is changed by selecting the button in 
 <p>Year: 1986</p>
 ```
 
-## Event handling
+## Обработка событий
 
 Blazor provides event handling features. For an HTML element attribute named `on<event>` (for example, `onclick`, `onsubmit`) with a delegate-typed value, Blazor treats the attribute's value as an event handler. The attribute's name always starts with `on`.
 
