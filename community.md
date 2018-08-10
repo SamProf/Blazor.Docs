@@ -31,6 +31,7 @@
 * [Blazor To-Do App](https://github.com/BorowskiKamil/blazor-tasks)
 * [Blazor + Electron пример](https://github.com/SteveSandersonMS/BlazorElectronExperiment.Sample)
 * [Blazor + Sitecore - Динамические страницы и маршрутизация](https://github.com/GoranHalvarsson/SitecoreBlazor)
+* [Blazor UWP Sample](https://github.com/pushqrdx/Blazor.Universal) &ndash; Use Blazor.Server to build UWP apps.
 * [Toss](https://github.com/RemiBou/Toss.Blazor)
 * [TrendTv](https://github.com/MattMarked/TrendTv) ([Демо](http://zaptube2.azurewebsites.net/)) &ndash; Получить видео-список с YouTube и "zap" в режиме реального времени между трендовыми видеофильмами, отфильтрованными по странам или категориям.
 
@@ -57,3 +58,4 @@
 ## Другие
 
 * [Trail: Blazor рендеринг с F#](https://github.com/panesofglass/trail)
+* [Bionic](https://github.com/bmsantos/bionic) &ndash; An Ionic CLI clone for Blazor projects.
