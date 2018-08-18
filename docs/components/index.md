@@ -17,7 +17,7 @@ uid: client-side/blazor/components/index
 
 [!INCLUDE[](~/includes/blazor-preview-notice.md)]
 
-[Посмотреть или скачать примеры кода](https://github.com/aspnet/Blazor.Docs/tree/master/docs/common/samples/) ([как скачать](xref:client-side/blazor/index#view-and-download-samples)). Смотрите также [Начать](xref:client-side/blazor/get-started), для начала работы с Blazor.
+[Посмотреть или скачать примеры кода](https://github.com/aspnet/Blazor.Docs/tree/master/docs/common/samples/) ([как скачать](xref:client-side/blazor/index#просмотр-и-загрузка-примеров)). Смотрите также [Начать](xref:client-side/blazor/get-started), для начала работы с Blazor.
 
 Приложения Blazor создаются с использованием *компонентов*. Компонент представляет собой автономный фрагмент пользовательского интерфейса (UI), такой как страница, диалог или форма. Компонент включает как разметку HTML для рендеринга, так и логику обработки, необходимую для ввода данных или реагирования на события пользовательского интерфейса. Компоненты являются гибкими и легкими, и они могут быть вложенными, повторно использованными и совместно использоваться несколькими проектами.
 

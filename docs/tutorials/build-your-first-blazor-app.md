@@ -17,7 +17,7 @@ uid: client-side/blazor/tutorials/first-app
 
 Используя данную инструкцию, вы постепенно создаете приложение Blazor и быстро изуизучите основные функции фреймворка Blazor.
 
-[Посмотрите или скачайте примеры кода](https://github.com/aspnet/Blazor.Docs/tree/master/docs/tutorials/build-your-first-blazor-app/samples/) ([как скачать](xref:client-side/blazor/index#view-and-download-samples)). Смотрите [Начало работы с Blazor](xref:client-side/blazor/get-started).
+[Посмотрите или скачайте примеры кода](https://github.com/aspnet/Blazor.Docs/tree/master/docs/tutorials/build-your-first-blazor-app/samples/) ([как скачать](xref:client-side/blazor/index#просмотр-и-загрузка-примеров)). Смотрите [Начало работы с Blazor](xref:client-side/blazor/get-started).
 
 Чтобы создать проект в Visual Studio:
 
