@@ -1,7 +1,7 @@
 ---
-title: Blazor JavaScript interop
+title: Взаимодействие с JavaScript в Blazor
 author: danroth27
-description: Learn how to invoke JavaScript functions from .NET and .NET methods from JavaScript.
+description: Узнайте, как вызывать функции JavaScript из .NET и .NET методы из JavaScript.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -11,19 +11,19 @@ ms.technology: aspnet
 ms.topic: article
 uid: client-side/blazor/javascript-interop
 ---
-# Blazor JavaScript interop
+# Взаимодействие с JavaScript в Blazor
 
-By [Javier Calvarro Nelson](https://github.com/javiercn), [Daniel Roth](https://github.com/danroth27), and [Luke Latham](https://github.com/guardrex)
+От [Javier Calvarro Nelson](https://github.com/javiercn), [Daniel Roth](https://github.com/danroth27), и [Luke Latham](https://github.com/guardrex)
 
 [!INCLUDE[](~/includes/blazor-preview-notice.md)]
 
-A Blazor app can invoke JavaScript functions from .NET and .NET methods from JavaScript code.
+Приложение Blazor может вызывать функции JavaScript из .NET и .NET методы из кода JavaScript.
 
-## Invoke JavaScript functions from .NET methods
+## Вызов функций JavaScript из методов .NET
 
-There are times when Blazor .NET code is required to call a JavaScript function. For example, a JavaScript call can expose browser capabilities or functionality from a JavaScript library to the Blazor app.
+Бывают случаи, когда в коде .NET Blazor требуется вызов функций JavaScript. Вызов JavaScript может добавлять возможности работы с браузером или функциональные возможности из библиотеки JavaScript в приложение Blazor.
 
-To call into JavaScript from .NET, use the `IJSRuntime` abstraction, which is accessible from `JSRuntime.Current`. The `InvokeAsync<T>` method on `IJSRuntime` takes an identifier for the JavaScript function you wish to invoke along with any number of JSON serializable arguments. The function identifier is relative to the global scope (`window`). For example if you wish to call `window.someScope.someFunction`, the identifier is `someScope.someFunction`. There's no longer any need to register the function before it's called. The return type `T` must also be JSON serializable.
+Чтобы вызвать JavaScript из .NET, используйте абстракцию `IJSRuntime`, доступную из `JSRuntime.Current`. Метод `InvokeAsync<T>` на `IJSRuntime` принимает идентификатор функции JavaScript, которую вы хотите вызывать, и любое количество сериализуемых аргументов JSON. Идентификатор функции относится к глобальной области (`window`). Например, если вы хотите вызвать `window.someScope.someFunction`, идентификатором является` someScope.someFunction`. Больше нет необходимости регистрировать функцию до ее вызова. Тип возврата `T` также должен быть сериализуемым JSON.
 
 *exampleJsInterop.js*:
 
@@ -50,15 +50,15 @@ public class ExampleJsInterop
 }
 ```
 
-The `IJSRuntime` abstraction is asynchronous to allow for out-of-process scenarios. If the app runs in-process and you want to invoke a JavaScript function synchronously, downcast to `IJSInProcessRuntime` and call `Invoke<T>` instead. We recommend that most JavaScript interop libraries use the async APIs to ensure the libraries are available in all Blazor scenarios, client-side or server-side.
+Абстракция `IJSRuntime` является асинхронной, позволяющей использовать сценарии вне процесса. Если приложение запускается в процессе и вы хотите синхронно вызывать функцию JavaScript, отключите их до `IJSInProcessRuntime` и вызовите `Invoke<T>` вместо этого. Мы рекомендуем использовать асинхронные API для обеспечения доступности библиотек во всех сценариях Blazor, на стороне клиента или на стороне сервера.
 
-## Capture references to elements
+## Захват ссылок на элементы
 
-Some [JavaScript interop](xref:client-side/blazor/javascript-interop) scenarios require references to HTML elements. For example, a UI library may require an element reference for initialization, or you might need to call command-like APIs on an element, such as `focus` or `play`.
+Некоторые сценарии [взаимодействия с JavaScript](xref:client-side/blazor/javascript-interop) требуют ссылки на элементы HTML. Например, для библиотеки UI может потребоваться ссылка на элемент для инициализации, или вам может потребоваться вызвать командные API-интерфейсы для элемента, такие как `focus` или `play`.
 
-You can capture references to HTML elements in a component by adding a `ref` attribute to the HTML element and then defining a field of type `ElementRef` whose name matches the value of the `ref` attribute.
+Вы можете захватывать ссылки на элементы HTML в компоненте, добавляя атрибут `ref` к элементу HTML, а затем определяя поле типа `ElementRef`, имя которого соответствует значению атрибута `ref`.
 
-The following example shows capturing a reference to the username input element:
+В следующем примере показана запись ссылки на элемент ввода имени пользователя:
 
 ```csharp
 <input ref="username" ... />
@@ -69,11 +69,11 @@ The following example shows capturing a reference to the username input element:
 ```
 
 > [!NOTE]
-> Do **not** use captured element references as a way of populating the DOM. Doing so may interfere with Blazor's declarative rendering model.
+> **Не используйте** ссылки на захваченные элементы как способ заполнения DOM. Это может повлиять на модель декларативного рендеринга Blazor.
 
-As far as .NET code is concerned, an `ElementRef` is an opaque handle. The *only* thing you can do with it is pass it through to JavaScript code via JavaScript interop. When you do so, the JavaScript-side code receives an `HTMLElement` instance, which it can use with normal DOM APIs.
+Что касается кода .NET, то `ElementRef` является непрозрачным дескриптором. Всё что вы можете сделать с ней, - это передать код JavaScript через JavaScript. Когда вы это сделаете, код на стороне JavaScript получает экземпляр `HTMLElement`, который он может использовать с обычными API-интерфейсами DOM.
 
-For example, the following code defines a .NET extension method that enables setting the focus on an element:
+Например, следующий код определяет метод расширения .NET, который позволяет настроить фокус на элементе:
 
 *mylib.js*:
 
@@ -104,7 +104,7 @@ namespace MyLib
 }
 ```
 
-Now you can focus inputs in any of your components:
+Теперь вы можете сфокусировать входные данные в любом из ваших компонентов:
 
 ```cshtml
 @using MyLib
@@ -123,11 +123,11 @@ Now you can focus inputs in any of your components:
 ```
 
 > [!IMPORTANT]
-> The `username` variable is only populated after the component renders and its output includes the `<input>` element. If you try to pass an unpopulated `ElementRef` to JavaScript code, the JavaScript code receives `null`. To manipulate element references after the component has finished rendering (to set the initial focus on an element) use the `OnAfterRenderAsync` or `OnAfterRender` [component lifecycle methods](xref:client-side/blazor/components/index#жизненный-цикл-методов).
+> Переменная `username` заполняется только после рендеринга компонента, а его вывод включает элемент `<input>`. Если вы попытаетесь передать непосещенный код `ElementRef` на JavaScript, код JavaScript получит `null`. Чтобы манипулировать ссылками на элементы после того, как компонент завершил рендеринг (для установки начального фокуса на элемент), используйте методы `OnAfterRenderAsync` или `OnAfterRender` [методы жизненного цикла компонентов](xref:client-side/blazor/components/index#жизненный-цикл-методов).
 
-## Invoke .NET methods from JavaScript functions
+## Вызов .NET методов из функций JavaScript
 
-To invoke a static .NET method from JavaScript, use the `DotNet.invokeMethod` or `DotNet.invokeMethodAsync` functions. Pass in the identifier of the static method you wish to call, the name of the assembly containing the function, and any arguments. Again, the async version is preferred to support out-of-process scenarios. To be invokable from JavaScript, the .NET method must be public, static, and decorated with `[JSInvokable]`. By default, the method identifier is the method name, but you can specify a different identifier using the `JSInvokableAttribute` constructor. Calling open generic methods isn't currently supported.
+Для вызова статических .NET методов из JavaScript используются функции `DotNet.invokeMethod` или `DotNet.invokeMethodAsync`. Передайте идентификатор статического метода, который вы хотите вызвать, имя сборки, содержащей функцию, и любые аргументы. Опять же, асинхронная версия предпочтительна для поддержки сценариев вне процесса. Чтобы быть вызываемым из JavaScript, метод .NET должен быть общедоступным, статическим и помеченным `[JSInvokable]`. По умолчанию идентификатор метода - это имя метода, но вы можете указать другой идентификатор, используя конструктор `JSInvokableAttribute`. Вызов открытых общих методов в настоящее время не поддерживается.
 
 *JavaScriptInteroperable.cs*:
 
@@ -148,7 +148,7 @@ public class JavaScriptInvokable
 DotNet.invokeMethodAsync(assemblyName, 'ReturnArrayAsync').then(data => ...)
 ```
 
-New in Blazor 0.5.0, you can also call .NET instance methods from JavaScript. To invoke a .NET instance method from JavaScript, first pass the .NET instance to JavaScript by wrapping it in a `DotNetObjectRef` instance. The .NET instance is passed by reference to JavaScript, and you can invoke .NET instance methods on the instance using the `invokeMethod` or `invokeMethodAsync` functions. The .NET instance can also be passed as an argument when invoking other .NET methods from JavaScript.
+Новое в Blazor 0.5.0, вы также можете вызвать методы экземпляра .NET из JavaScript. Чтобы вызвать метод экземпляра .NET из JavaScript, сначала передайте экземпляр .NET на JavaScript, завернув его в экземпляр `DotNetObjectRef`. Экземпляр .NET передается по ссылке на JavaScript, и вы можете вызывать методы экземпляра .NET в экземпляре, используя функции `invokeMethod` или` invokeMethodAsync`. Экземпляр .NET также может быть передан как аргумент при вызове других методов .NET из JavaScript.
 
 *ExampleJsInterop.cs*:
 
@@ -198,10 +198,10 @@ public class HelloHelper
 Hello, Blazor!
 ```
 
-## Share interop code in a Blazor class library
+## Использовать код взаимодействия в библиотеке классов Blazor
 
-JavaScript interop code can be included in a Blazor class library (`dotnet new blazorlib`), which allows you to share the code in a NuGet package.
+JavaScript-код может быть включен в библиотеку классов Blazor (`dotnet new blazorlib`), которая позволяет вам делиться кодом в пакете NuGet.
 
-The Blazor class library handles embedding JavaScript resources in the built assembly. The JavaScript files are placed in the *wwwroot* folder, and the tooling takes care of embedding the resources when the library is built.
+Библиотека классов Blazor обрабатывает встраивание ресурсов JavaScript в встроенную сборку. Файлы JavaScript помещаются в папку *wwwroot*, а инструментарий заботится о вложении ресурсов при создании библиотеки.
 
-The built NuGet package is referenced in the project file of a Blazor app just as any normal NuGet package is referenced. After the app has been restored, app code can call into JavaScript as if it were C#.
+Созданный пакет NuGet ссылается в файле проекта приложения Blazor так же, как и на любой нормальный пакет NuGet. После восстановления приложения, код приложения может вызвать JavaScript, как если бы он был C# кодом.
