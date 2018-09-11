@@ -1,7 +1,7 @@
 ---
-title: Host and deploy Blazor
+title: Размещение и развертывание Blazor
 author: guardrex
-description: Discover how to host and deploy Blazor apps using ASP.NET Core, Content Delivery Networks (CDN), file servers, and GitHub Pages.
+description: Узнайте, как размещать и развертывать приложения Blazor с использованием ядра ASP.NET, сетей доставки контента (CDN), файловых серверов и страниц GitHub.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -11,66 +11,66 @@ ms.technology: aspnet
 ms.topic: article
 uid: client-side/blazor/host-and-deploy/index
 ---
-# Host and deploy Blazor
+# Размещение и развертывание Blazor
 
-By [Luke Latham](https://github.com/guardrex), [Rainer Stropek](https://www.timecockpit.com), and [Daniel Roth](https://github.com/danroth27)
+By [Luke Latham](https://github.com/guardrex), [Rainer Stropek](https://www.timecockpit.com) и [Daniel Roth](https://github.com/danroth27)
 
 [!INCLUDE[](~/includes/blazor-preview-notice.md)]
 
-## Publish the app
+## Публикация приложения
 
-Blazor apps are published for deployment in Release configuration with the [dotnet publish](https://docs.microsoft.com/dotnet/core/tools/dotnet-publish) command. An IDE may handle executing the `dotnet publish` command automatically using its built-in publishing features, so it might not be necessary to manually execute the command from a command prompt depending on the development tools in use.
+Приложения Blazor публикуются для развертывания в конфигурации Release с помощью команды [dotnet publish](https://docs.microsoft.com/dotnet/core/tools/dotnet-publish). IDE может обрабатывать выполнение команды `dotnet publish` автоматически, используя встроенные функции публикации, поэтому может не потребоваться вручную выполнить команду из командной строки в зависимости от используемых инструментов разработки. 
 
 ```console
 dotnet publish -c Release
 ```
 
-`dotnet publish` triggers a [restore](https://docs.microsoft.com/dotnet/core/tools/dotnet-restore) of the project's dependencies and [builds](https://docs.microsoft.com/dotnet/core/tools/dotnet-build) the project before creating the assets for deployment. As part of the build process, unused methods and assemblies are removed to reduce app download size and load times. The deployment is created in the */bin/Release/&lt;target-framework&gt;/publish* folder.
+`dotnet publish` запускает [восстановление](https://docs.microsoft.com/dotnet/core/tools/dotnet-restore) зависимостей проекта и [builds](https://docs.microsoft.com/dotnet/core/tools/dotnet-build) перед созданием файлов для развертывания. Как часть процесса сборки, неиспользуемые методы и сборки удаляются, чтобы уменьшить размер загрузки приложения и время загрузки. Развертывание создается в каталоге */bin/Release/&lt;target-framework&gt;/publish*.
 
-The assets in the *publish* folder are deployed to the web server. Deployment might be a manual or automated process depending on the development tools in use.
+Содержимое в каталоге *publish* развертываются на веб-сервере. Развертывание может быть ручным или автоматизированным процессом в зависимости от используемых инструментов разработки.
 
-## Rewrite URLs for correct routing
+## Переписать URL-адреса для правильной маршрутизации
 
-Routing requests for page components in a client-side app isn't as simple as routing requests to a server-side, hosted app. Consider a client-side app with two pages:
+Запросы маршрутизации для компонентов страницы в клиентском приложении не так просты, как запросы на маршрутизацию на серверное, размещенное приложение. Рассмотрим клиентское приложение с двумя страницами:
 
-* **_Main.cshtml_** &ndash; Loads at the root of the app and contains a link to the About page (`href="About"`).
-* **_About.cshtml_** &ndash; About page.
+* **_Main.cshtml_** &ndash; Загружает корневое приложение и содержит ссылку на страницу О сайте (`href="About"`).
+* **_About.cshtml_** &ndash; Страница О сайте.
 
-When the app's default document is requested using the browser's address bar (for example, `https://www.contoso.com/`):
+Когда запрашивается документ по умолчанию приложения, используя адресную строку браузера (например, `https://www.contoso.com/`):
 
-1. The browser makes a request.
-1. The default page is returned, which is usually *index.html*.
-1. *index.html* bootstraps the app.
-1. Blazor's router loads and the Razor Main page (*Main.cshtml*) is displayed.
+1. Браузер делает запрос.
+1. Возвращается страница по умолчанию, которая обычно *index.html*.
+1. *index.html* загружает приложение.
+1. Маршрутизатор Blazor загружается и Razor страница `Main` (*Main.cshtml*) отображается.
 
-On the Main page, selecting the link to the About page loads the About page. Selecting the link to the About page works on the client because the Blazor router stops the browser from making a request on the Internet to `www.contoso.com` for `About` and serves the About page itself. All of the requests for internal pages *within the client-side app* work the same way: Requests don't trigger browser-based requests to server-hosted resources on the Internet. The router handles the requests internally.
+На главной странице, выбрав ссылку на страницу `О сайте`, загружается страница `О сайте`. Выбор ссылки на странице `О сайте` работает на клиенте, потому что маршрутизатор Blazor запрещает браузеру делать запрос в Интернете на `www.contoso.com` для `О сайте` и обслуживает страницу внутри себя. Все запросы для внутренних страниц *в клиентском приложении* работают одинаково: запросы не вызывают запросы на основе браузера на серверные ресурсы в Интернете. Маршрутизатор обрабатывает запросы внутренне.
 
-If a request is made using the browser's address bar for `www.contoso.com/About`, the request fails. No such resource exists on the app's Internet host, so a *404 Not found* response is returned.
+Если запрос выполняется с помощью адресной строки браузера для `www.contoso.com/About`, запрос не выполняется. Такой ресурс не существует на интернет-хосте приложения, поэтому возвращается ответ *404 Не найдено*.
 
-Because browsers make requests to Internet-based hosts for client-side pages, web servers and hosting services must rewrite all requests for resources not physically on the server to the *index.html* page. When *index.html* is returned, the app's client-side router takes over and responds with the correct resource.
+Поскольку браузеры запрашивают интернет-хосты для клиентских страниц, веб-серверы и службы хостинга должны переписывать все запросы на ресурсы, не физически находящиеся на сервере, на страницу *index.html*. Когда возвращается *index.html*, клиентский маршрутизатор приложения берет обработку на себя и возвращает правильный ресурс.
 
-## App base path
+## Базовый путь приложения
 
-The app base path is the virtual app root path on the server. For example, an app that resides on the Contoso server in a virtual folder at `CoolBlazorApp/` is reached at `https://www.contoso.com/CoolBlazorApp` and has a virtual base path of `CoolBlazorApp/`. By setting the app base path to `CoolBlazorApp/`, the app is made aware of where it virtually resides on the server. The app can use the app base path to construct URLs relative to the app root from a component that isn't in the root directory. This allows components that exist at different levels of the directory structure to build links to other resources at locations throughout the app. The app base path is also used to intercept hyperlink clicks where the `href` target of the link is within the app base path URI space&mdash;the Blazor router handles the internal navigation.
+Основной путь к приложению - это корневой путь виртуального приложения на сервере. Например, приложение, которое находится на сервере Contoso в виртуальной папке `CoolBlazorApp/`, достигается по адресу `https://www.contoso.com/CoolBlazorApp` и имеет виртуальный базовый путь `CoolBlazorApp/`. Установив базовый путь приложения к `CoolBlazorApp/`, приложение узнает, где оно фактически находится на сервере. Приложение может использовать базовый путь приложения для создания URL-адресов относительно корня приложения из компонента, который не находится в корневом каталоге. Это позволяет компонентам, которые существуют на разных уровнях структуры каталогов, создавать ссылки на другие ресурсы в местах приложения. Базовый-путь к приложению также используется для перехвата кликов по гиперссылкам, где цель `href` ссылки находится в пространстве URI базового пути приложения; маршрутизатор Blazor обрабатывает внутреннюю навигацию.
 
-In many hosting scenarios, the server's virtual path to the app is the root of the app. In these cases, the app base path is an empty string, which is the default configuration for a Blazor app. In other hosting scenarios, such as GitHub Pages and IIS virtual directories, the app base path must be set to the server's virtual path to the app. To set the Blazor app's base path, add or update the **&lt;base&gt;** tag in *index.html* on the **&lt;head&gt;** tag. Set the `href` attribute value to `<virtual-path>/` (the trailing slash is required), where `<virtual-path>/` is the full virtual app root path on the server for the app.
+Во многих сценариях хоста виртуальный путь сервера к приложению является корнем приложения. В этих случаях базовый путь к приложению - пустая строка, которая является стандартной конфигурацией для приложения Blazor. В других сценариях хостинга, таких как виртуальные каталоги GitHub Pages и IIS, базовый путь приложения должен быть установлен на виртуальный путь сервера к приложению. Чтобы установить базовый путь приложения Blazor, добавьте или обновите тег **&lt;base&gt;** в *index.html* в теге **&lt;head&gt;**. Установите значение атрибута `href` в `<virtual-path>/` (требуется конечная косая черта), где `<virtual-path>/` является полным корневым корнем виртуального приложения на сервере для приложения.
 
-## Deployment models
+## Модели развертывания
 
-There are two deployment models for Blazor apps:
+Существуют две модели развертывания для приложений Blazor:
 
-* [Hosted deployment with ASP.NET Core](#hosted-deployment-with-aspnet-core) &ndash; Hosted deployment uses an ASP.NET Core app on the server to host the Blazor app.
-* [Standalone deployment](#standalone-deployment) &ndash; Standalone deployment places the Blazor app on a static hosting web server or service, where .NET isn't used to serve the Blazor app.
+* [Hosted deployment with ASP.NET Core](#hosted-deployment-with-aspnet-core) &ndash; Развертывание использует приложение ASP.NET Core на сервере для размещения приложения Blazor.
+* [Standalone deployment](#standalone-deployment) &ndash; Автономное развертывание размещает приложение Blazor на статичном веб-сервере или службе, где .NET не используется для обслуживания приложения Blazor.
 
-### Hosted deployment with ASP.NET Core
+### Развертывание с помощью ASP.NET Core
 
-In a hosted deployment, an ASP.NET Core app handles single-page application routing and Blazor app hosting. The published ASP.NET Core app, along with one or more Blazor apps that it hosts, is deployed to the web server or hosting service.
+В развертывании приложение ASP.NET Core обрабатывает одностраничную маршрутизацию приложений и хостинг приложений Blazor. Опубликованное приложение ASP.NET Core вместе с одним или несколькими приложениями Blazor, которые он размещает, развертывается на веб-сервере или в сервисе хостинга.
 
-To host a Blazor app, the ASP.NET Core app must:
+Чтобы разместить приложение Blazor, приложение ASP.NET Core должно:
 
-* Reference the Blazor app project.
-* Reference the [Microsoft.AspNetCore.Blazor.Server](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.Server/) package in its project file.
-* Configure Blazor app hosting with the `UseBlazor` extension method on [IApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder) in `Startup.Configure`.
+* Включать Blazor приложение.
+* Содержать пакет [Microsoft.AspNetCore.Blazor.Server](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.Server/) в файлах проекта.
+* Иметь настроеный хостинг приложений Blazor с помощью марширения метода `UseBlazor` в [IApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder) в `Startup.Configure`.
 
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -84,73 +84,73 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-The `UseBlazor` extension method performs the following tasks:
+Метод расширения `UseBlazor` выполняет следующую задачу:
 
-* Configure [Static File Middleware](https://docs.microsoft.com/aspnet/core/fundamentals/static-files) to serve Blazor's static assets from the *dist* folder. In the Development environment, the files in *wwwroot* folder are served.
-* Configure single-page application routing for resource requests that aren't for actual files that exist on disk. The app serves the default document (*wwwroot/index.html*) for any request that hasn't been served by a prior Static File Middleware instance. For example, a request to receive a page from the app that should be handled by the Blazor router on the client is rewritten into a request for the *wwwroot/index.html* page.
+* Конфигурирует [Static File Middleware](https://docs.microsoft.com/aspnet/core/fundamentals/static-files) для обслуживания статических активов Blazor из папки *dist*. В среде разработки хранятся файлы в папке *wwwroot*.
+* Настраивает одностраничную маршрутизацию приложений для запросов ресурсов, которые не предназначены для реальных файлов, существующих на диске. Приложение обслуживает документ по умолчанию (*wwwroot/index.html*) для любого запроса, который не был обработан предыдущим экземпляром промежуточного статического файла. Например, запрос на получение страницы из приложения, который должен обрабатываться маршрутизатором Blazor на клиенте, переписывается в запрос на странице *wwwroot/index.html*.
 
-When the ASP.NET Core app is published, the Blazor app is included in the published output so that the ASP.NET Core app and the Blazor app can be deployed together. For more information on ASP.NET Core app hosting and deployment, see [Host and deploy ASP.NET Core](https://docs.microsoft.com/aspnet/core/host-and-deploy).
+Когда опубликовано приложение ASP.NET Core, приложение Blazor входит в опубликованный каталог, поэтому приложение ASP.NET Core и приложение Blazor могут быть развернуты вместе. Для получения дополнительной информации о хостинге и развертывании основного приложения ASP.NET смотрите [Host and deploy ASP.NET Core](https://docs.microsoft.com/aspnet/core/host-and-deploy).
 
-For information on deploying to Azure App Service, see the following topics:
+Информацию о развертывании в Azure App Service смотрите в следующих разделах:
 
 [Publish to Azure with Visual Studio](https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vs)  
-Learn how to publish an ASP.NET Core-hosted Blazor app to Azure App Service using Visual Studio.
+Узнайте, как опубликовать приложение Blazor с поддержкой Core для Azure App Service с помощью Visual Studio.
 
 [Publish to Azure with CLI tools](https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-cli)  
-Learn how to publish an ASP.NET Core app to Azure App Service using the Git command-line client.
+Узнайте, как публиковать приложение ASP.NET Core в Azure App Service, используя клиент командной строки Git.
 
-### Standalone deployment
+### Автономное развертывание
 
-In a standalone deployment, only the Blazor client-side app is deployed to the server or hosting service. An ASP.NET Core server-side app isn't used to host the Blazor app. The Blazor app's static files are requested by the browser directly from the static file web server or service.
+При автономном развертывании на сервер или службу хостинга развертывается только клиентское приложение Blazor. Серверное приложение ASP.NET Core не используется для размещения приложения Blazor. Статические файлы приложения Blazor запрашиваются браузером непосредственно с веб-сервера или службы статического файла.
 
-When deploying a standalone Blazor app from the published *dist* folder, any web server or hosting service that serves static files can host a Blazor app.
+При развертывании автономного приложения Blazor из опубликованной *dist* папки любой веб-сервер или служба хостинга, которая обслуживает статические файлы, может работать с приложенями Blazor.
 
 #### IIS
 
-IIS is a capable static file server for Blazor apps. To configure IIS to host Blazor, see [Build a Static Website on IIS](https://docs.microsoft.com/iis/manage/creating-websites/scenario-build-a-static-website-on-iis).
+IIS - это статический файловый сервер для приложений Blazor. Чтобы настроить IIS на размещение Blazor, смотрите [Создайте статический веб-сайт в IIS](https://docs.microsoft.com/iis/manage/creating-websites/scenario-build-a-static-website-on-iis).
 
-Published assets are created in the *\\bin\\Release\\&lt;target-framework&gt;\\publish* folder. Host the contents of the *publish* folder on the web server or hosting service.
+Опубликованные активы создаются в каталоге *\\bin\\Release\\&lt;target-framework&gt;\\publish*. Содержимое каталога *publish* размещается на веб-сервере или хостинге.
 
 **web.config**
 
-When a Blazor project is published, a *web.config* file is created with the following IIS configuration:
+Когда проект Blazor публикуется, создается файл *web.config* со следующей конфигурацией IIS:
 
-* MIME types are set for the following file extensions:
+* Типы MIME установлены для следующих расширений файлов:
   - *\*.dll*: `application/octet-stream`
   - *\*.json*: `application/json`
   - *\*.wasm*: `application/wasm`
   - *\*.woff*: `application/font-woff`
   - *\*.woff2*: `application/font-woff`
-* HTTP compression is enabled for the following MIME types:
+* HTTP-сжатие включено для следующих типов MIME:
   - `application/octet-stream`
   - `application/wasm`
-* URL Rewrite Module rules are established:
-  - Serve the sub-directory where the app's static assets reside (*&lt;assembly_name&gt;\\dist\\&lt;path_requested&gt;*).
-  - Create SPA fallback routing so that requests for non-file assets are redirected to the app's default document in its static assets folder (*&lt;assembly_name&gt;\\dist\\index.html*).
+* Правила перезаписи URL-адреса установлены:
+  - Подавать подкаталог, где расположены статические активы приложения (*&lt;assembly_name&gt;\\dist\\&lt;path_requested&gt;*).
+  - Создавать резервную маршрутизацию SPA, чтобы запросы на нефайловые активы перенаправлялись к документу по умолчанию приложения в папке статических ресурсов (*&lt;assembly_name&gt;\\dist\\index.html*).
 
-**Install the URL Rewrite Module**
+**Установка модуля перезаписи URL-адресов**
 
-The [URL Rewrite Module](https://www.iis.net/downloads/microsoft/url-rewrite) is required to rewrite URLs. The module isn't installed by default, and it isn't available for install as an Web Server (IIS) role service feature. The module must be downloaded from the IIS website. Use the Web Platform Installer to install the module:
+[Модуль перезаписи URL-адресов](https://www.iis.net/downloads/microsoft/url-rewrite) требуется чтобы переписывать URL-адреса. Модуль не установлен по умолчанию, и он недоступен для установки в качестве службы роли веб-сервера (IIS). Модуль должен быть загружен с веб-сайта IIS. Используйте установщик веб-платформы для установки модуля:
 
-1. Locally, navigate to the [URL Rewrite Module downloads page](https://www.iis.net/downloads/microsoft/url-rewrite#additionalDownloads). For the English version, select **WebPI** to download the WebPI installer. For other languages, select the appropriate architecture for the server (x86/x64) to download the installer.
-1. Copy the installer to the server. Run the installer. Select the **Install** button and accept the license terms. A server restart isn't required after the install completes.
+1. Перейдите к [Страница загрузки модуля перезаписи URL-адреса](https://www.iis.net/downloads/microsoft/url-rewrite#additionalDownloads). Для английской версии выберите **WebPI** для загрузки установщика WebPI. Для других языков выберите соответствующую архитектуру для сервера (x86/x64) для загрузки установщика.
+1. Скопируйте установщик на сервер. Запустите программу установки. Выберите кнопку **Install** и примите условия лицензии. После завершения установки перезагрузка сервера не требуется.
 
-**Configure the website**
+**Настройка веб-сайта**
 
-Set the website's **Physical path** to the Blazor app's folder. The folder contains:
+Установите  **физический путь** веб-сайта в папку приложения Blazor. Папка содержит:
 
-* The *web.config* file that IIS uses to configure the website, including the required redirect rules and file content types.
-* The app's static asset folder.
+* Файл *web.config*, который IIS использует для настройки веб-сайта, включая необходимые правила переадресации и типы файлов.
+* Папка статических файлов приложения.
 
-**Troubleshooting**
+**Исправление проблем**
 
-If a *500 Internal Server Error* is received and IIS Manager throws errors when attempting to access the website's configuration, confirm that the URL Rewrite Module is installed. When the module isn't installed, the *web.config* file can't be parsed by IIS. This prevents the IIS Manager from loading the website's configuration and the website from serving Blazor's static files.
+Если получена *500 Internal Server Error* и диспетчер IIS выдает ошибки при попытке получить доступ к настройке веб-сайта, убедитесь, что установлен модуль перезаписи URL-адресов. Когда модуль не установлен, файл *web.config* не может быть проанализирован IIS. Это не позволяет диспетчеру IIS загружать конфигурацию веб-сайта и веб-сайт из службы статических файлов Blazor.
 
-For more information on troubleshooting deployments to IIS, see [Troubleshoot ASP.NET Core on IIS](https://docs.microsoft.com/aspnet/core/host-and-deploy/iis/troubleshoot).
+Дополнительные сведения об устранении неполадок при развертывании в IIS смотрите [Устранение неполадок в ASP.NET Core на IIS](https://docs.microsoft.com/aspnet/core/host-and-deploy/iis/troubleshoot).
 
 #### Nginx
 
-The following *nginx.conf* file is simplified to show how to configure Nginx to send the *Index.html* file whenever it can't find a corresponding file on disk.
+Следующий файл *nginx.conf* упрощен, чтобы показать, как настроить Nginx для отправки файла *Index.html* всякий раз, когда он не может найти соответствующий файл на диске.
 
 ```
 events { }
@@ -166,13 +166,13 @@ http {
 }
 ```
 
-For more information on production Nginx web server configuration, see [Creating NGINX Plus and NGINX Configuration Files](https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/).
+Для получения дополнительной информации о конфигурации веб-сервера Nginx смотрите [Создание файлов конфигурации NGINX Plus и NGINX](https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/).
 
-#### Nginx in Docker
+#### Nginx в Docker
 
-To host Blazor in Docker using Nginx, setup the Dockerfile to use the Alpine-based Nginx image. Update the Dockerfile to copy the *nginx.config* file into the container.
+Чтобы разместить Blazor в Docker с помощью Nginx, настройте файл Docker для использования образа Nginx на основе Alpine. Обновите файл Docker, чтобы скопировать файл *nginx.config* в контейнер.
 
-Add one line to the Dockerfile, as shown in the following example:
+Добавьте строки в файл Docker, как показано в следующем примере:
 
 ```
 FROM nginx:alpine
@@ -182,6 +182,6 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 #### GitHub Pages
 
-To handle URL rewrites, add a *404.html* file with a script that handles redirecting the request to the *index.html* page. For an example implementation provided by the community, see [Single Page Apps for GitHub Pages](http://spa-github-pages.rafrex.com/) ([rafrex/spa-github-pages on GitHub](https://github.com/rafrex/spa-github-pages#readme)). An example using the community approach can be seen at [blazor-demo/blazor-demo.github.io on GitHub](https://github.com/blazor-demo/blazor-demo.github.io) ([live site](https://blazor-demo.github.io/)).
+Чтобы обрабатывать перезапись URL, добавьте файл *404.html* со сценарием, который обрабатывает перенаправление запроса на страницу *index.html*. Для примера реализации, представленной сообществом, смотрите [Single Page Apps for GitHub Pages](http://spa-github-pages.rafrex.com/) ([rafrex/spa-github-pages on GitHub](https://github.com/rafrex/spa-github-pages#readme)). Пример использования сообществом можно увидеть на [blazor-demo/blazor-demo.github.io в GitHub](https://github.com/blazor-demo/blazor-demo.github.io) ([живой сайт](https://blazor-demo.github.io/)).
 
-When using a project site instead of an organization site, add or update the **&lt;base&gt;** tag in *index.html*. Set the `href` attribute value to `<repository-name>/`, where `<repository-name>/` is the GitHub repository name.
+При использовании сайта проекта вместо сайта организации добавьте или обновите **&lt;base&gt;** тег в файле *index.html*. установите значение атрибута `href` как `<repository-name>/`, где `<repository-name>/` это имя репозитория GitHub.
