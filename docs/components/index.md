@@ -237,9 +237,9 @@ Blazor предоставляет функции обработки событи
 <button onclick="@(e => Console.WriteLine("Hello, world!"))">Say hello</button>
 ```
 
-## Capture references to components
+## Захват ссылок на компоненты
 
-Component references provide a way get a reference to a component instance so that you can issue commands to that instance, such as `Show` or `Reset`. To capture a component reference, add a `ref` attribute to the child component and then define a field with the same name and the same type as the child component.
+Ссылки на компоненты предоставляют способ получить ссылку на экземпляр компонента, чтобы вы могли выдавать команды этому экземпляру, например `Show` или `Reset`. Чтобы зафиксировать ссылку на компонент, добавьте атрибут `ref` к дочернему компоненту, а затем определите поле с тем же именем и тем же типом, что и дочерний компонент.
 
 ```cshtml
 <MyLoginDialog ref="loginDialog" ... />
@@ -254,15 +254,15 @@ Component references provide a way get a reference to a component instance so th
 }
 ```
 
-When the component is rendered, the `loginDialog` field is populated with the `MyLoginDialog` child component instance. You can then invoke .NET methods on the component instance.
+Когда компонент отображается, поле `loginDialog` заполняется экземпляром дочернего компонента `MyLoginDialog`. Затем вы можете вызвать методы .NET на экземпляре компонента.
 
 > [!IMPORTANT]
-> The `loginDialog` variable is only populated after the component is rendered and its output includes the `MyLoginDialog` element because until then there is nothing to reference. To manipulate components references after the component has finished rendering, use the `OnAfterRenderAsync` or `OnAfterRender` lifecycle methods.
+> Переменная `loginDialog` заполняется только после рендеринга компонента, и ее вывод включает элемент `MyLoginDialog`, потому что до этого момента не на что ссылаться. Чтобы манипулировать ссылками на компоненты после завершения рендеринга компонента, используйте методы жизненного цикла `OnAfterRenderAsync` или `OnAfterRender`.
 
-While capturing component references uses a similar syntax to [capturing element references](xref:client-side/blazor/javascript-interop#capturing-references-to-elements), it isn't a [JavaScript interop](xref:client-side/blazor/javascript-interop) feature. Component references aren't passed to JavaScript code; they're only used in .NET code.
+При захвате ссылок компонентов используется аналогичный синтаксис для [захват ссылок на элементы](xref:client-side/blazor/javascript-interop#захват-ссылок-на-элементы), это не функционал [JavaScript-взаимодействие](xref:client-side/blazor/javascript-interop). Ссылки на компонент не передаются в код JavaScript; они используются только в коде .NET.
 
 > [!NOTE]
-> Do **not** use component references to mutate the state of child components. Instead, always use normal declarative parameters to pass data to child components. This causes child components to rerender at the correct times automatically.
+> **Не** используйте ссылки на компоненты для изменения состояния дочерних компонентов. Вместо этого всегда используйте обычные декларативные параметры для передачи данных дочерним компонентам. Это приводит к тому, что дочерние компоненты автоматически возвращаются в правильное время.
 
 ## Жизненный цикл методов
 

@@ -1,7 +1,7 @@
 ---
-title: Blazor hosting models
+title: Blazor модели хостинга
 author: danroth27
-description: Understand client-side and server-side Blazor hosting models.
+description: Описание клиентских и серверных моделей хостинга Blazor.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -11,47 +11,47 @@ ms.technology: aspnet
 ms.topic: article
 uid: client-side/blazor/host-and-deploy/hosting-models
 ---
-# Blazor hosting models
+# Blazor модели хостинга
 
-By [Daniel Roth](https://github.com/danroth27)
+От [Daniel Roth](https://github.com/danroth27)
 
 [!INCLUDE[](~/includes/blazor-preview-notice.md)]
 
-Blazor is a client-side web framework designed primarily to run in the browser on a WebAssembly-based .NET runtime. Blazor supports multiple hosting models, including out-of-process hosting models, where the Blazor component logic runs separately from the UI thread. Regardless of the hosting model, the Blazor app and component models remain *the same*. This article discusses the available hosting models for Blazor.
+Blazor - это веб-инфраструктура на стороне клиента, предназначенная, в первую очередь, для запуска в браузере среды выполнения .NET на основе WebAssembly. Blazor поддерживает несколько моделей хостинга, в том числе и вне процесса хостинга моделей, где логика компонент Blazor работает отдельно от потока пользовательского интерфейса. Независимо от модели хостинга, приложение Blazor и модели компонентов остаются *одинаковыми*. В этой статье обсуждаются доступные модели хостинга для Blazor.
 
-## Client-side (in-process) hosting model
+## Клиентская (внутрипроцессная) модель хостинга
 
-The principal hosting model for Blazor is running client-side in the browser. In this model, the Blazor app, its dependencies, and the .NET runtime are downloaded to the browser, and the app is executed directly on the browser UI thread. All UI updates and event handling happens within the same process. The app assets can be deployed as static files using whatever web server is preferred (see [Host and deploy](xref:client-side/blazor/host-and-deploy/index)).
+Основная модель хостинга для Blazor работает на стороне клиента в браузере. В этой модели приложение Blazor, его зависимости и среда выполнения .NET загружаются в браузер, а приложение выполняется непосредственно в потоке пользовательского интерфейса браузера. Все обновления пользовательского интерфейса и обработка событий происходят в одном процессе. Файлы приложения могут быть развернуты как статические файлы с использованием любого веб-сервера (Смотрите [Хостинг и развертывание](xref:client-side/blazor/host-and-deploy/index)).
 
-![Blazor client-side](https://user-images.githubusercontent.com/1874516/43042852-998bb680-8d3b-11e8-9d39-adf8d3d77360.png)
+![Blazor на стороне клиента](https://user-images.githubusercontent.com/1874516/43042852-998bb680-8d3b-11e8-9d39-adf8d3d77360.png)
 
-To create a Blazor app using the client-side hosting model, use the "Blazor" or "Blazor (ASP.NET Core Hosted)" project templates (`blazor` or `blazorhosted` template when using [dotnet new](/dotnet/core/tools/dotnet-new) at a command prompt). The included *blazor.webassembly.js* script handles:
+Чтобы создать приложение Blazor с использованием модели хостинга на стороне клиента, используйте шаблоны проектов "Blazor" или "Blazor (ASP.NET Core Hosted)" (`blazor` или `blazorhosted` шаблон при использовании команды [dotnet new](/dotnet/core/tools/dotnet-new) в командной строке). Включенны *blazor.webassembly.js* скрипты:
 
-* Downloading the .NET runtime, the app, and its dependencies.
-* Initialization of the runtime to run the app. 
+* Загрузка среды выполнения .NET, приложения и ее зависимостей.
+* Инициализация среды выполнения для запуска приложения. 
 
-The benefits of the client-side hosting model are:
+Преимущества клиентской модели хостинга:
 
-* No .NET server-side dependency
-* Rich interactive UI
-* Fully leverage the client resources and capabilities
-* Offload work from the server to the client
-* Support offline scenarios
+* Нет зависимостей на стороне сервера .NET
+* Богатый интерактивный интерфейс
+* Полное использование клиентских ресурсов и возможностей
+* Разгрузка задач с сервера на клиент
+* Поддержка автономных сценариев
 
-The downsides to the client-side hosting model are:
+Недостатком модели хостинга на стороне клиента является:
 
-* Restricted to the capabilities of the browser
-* Requires more capable client hardware and software (for example, WebAssembly support)
-* Larger download size and app load time
-* Less mature .NET runtime and tooling support (for example, limitations in .NET Standard support and debugging)
+* Ограничено возможностями браузера
+* Требуется более надежное клиентское оборудование и программное обеспечение (например, поддержка WebAssembly)
+* Увеличенное время загрузки и время загрузки приложения
+* Менее зрелая среда выполнения .NET и инструментальная поддержка (например, ограничения в поддержке и отладке .NET Standard)
 
-## Server-side hosting model
+## Серверный хостинг модель
 
-In the server-side hosting model, Blazor is executed on the server from within an ASP.NET COre app. UI updates, event handling, and JavaScript calls are handled over a SignalR connection.
+В серверной модели хостинга Blazor выполняется на сервере из приложения ASP.NET Core. Обновления пользовательского интерфейса, обработка событий и вызовы JavaScript обрабатываются через соединение SignalR.
 
-![Blazor server-side](https://user-images.githubusercontent.com/1874516/43042867-eaa8bb76-8d3b-11e8-8f1d-60768f86f710.png)
+![Blazor на стороне сервера](https://user-images.githubusercontent.com/1874516/43042867-eaa8bb76-8d3b-11e8-8f1d-60768f86f710.png)
 
-To create a Blazor app using the server-side hosting model, use the "Blazor (Server-side on ASP.NET Core)" template (`blazorserver` when using [dotnet new](/dotnet/core/tools/dotnet-new) at a command prompt). An ASP.NET Core app hosts the Blazor server-side app and sets up the SignalR endpoint where clients connect. The ASP.NET Core app references the Blazor `Startup` class to both add the server-side  Blazor services and to add the Blazor app to the request handling pipeline:
+Чтобы создать приложение Blazor с использованием серверной модели хостинга, используйте шаблон "Blazor (Server-side on ASP.NET Core)" (`blazorserver` при использовании команды [dotnet new](/dotnet/core/tools/dotnet-new) в командной строке). В приложении ASP.NET Core используется серверное приложение Blazor и настраивается конечная точка SignalR, к которой клиенты подключаются. Приложение ASP.NET Core ссылается на класс Blazor `Startup` для добавления серверных служб Blazor и добавления приложения Blazor к конвейеру обработки запросов:
 
 ```csharp
 public class Startup
@@ -70,19 +70,19 @@ public class Startup
 }
 ```
 
-The *blazor.server.js* script establishes the client connection. It's the app's responsibility to persist and restore app state as needed (for example, in the event of a lost network connection).
+Сценарий *blazor.server.js* устанавливает соединение с клиентом. Обязанностью приложения является сохранение и восстановление состояния приложения по мере необходимости (например, в случае потери сетевого подключения).
 
-The benefits of the server-side hosting model are:
+Преимущества серверной модели хостинга:
 
-* You can still write your entire app with .NET and C# using the Blazor component model.
-* Your app still has a rich interactive feel and avoids unnecessary page refreshes.
-* Your app download size is significantly smaller, and the initial app load time is much faster.
-* Your Blazor component logic can take full advantage of server capabilities, including using any .NET Core compatible APIs.
-* Because you're running on .NET Core on the server, existing .NET tooling, such as debugging, works as expected.
-* Server-side hosting works with thin clients (for example, browsers that don't support WebAssembly and resource constrained devices).
+* Вы все равно можете написать все свое приложение на .NET и C#, используя модель компонента Blazor.
+* Ваше приложение по-прежнему обладает богатым интерактивным восприятием и позволяет избежать ненужных обновлений страницы.
+* Размер загружаемого приложения значительно меньше, а начальное время загрузки приложения намного быстрее.
+* Логика компонента Blazor может в полной мере использовать возможности сервера, в том числе использование любых совместимых с .NET Core API.
+* Поскольку вы работаете на .NET Core на сервере, существующие инструменты .NET, такие как отладка, работают так, как ожидалось.
+* Хостинг на стороне сервера работает с тонкими клиентами (например, браузерами, которые не поддерживают WebAssembly и устройствами с ограниченными ресурсами).
 
-The downsides of the server-side hosting model are:
+Недостатки модели хостинга на стороне сервера:
 
-* Latency: every user interaction now involves a network hop.
-* No offline support: if the client connection goes down, the app stops working.
-* Scalability: the server must manage multiple client connections and handle client state.
+* Задержка: каждое взаимодействие с пользователем теперь связано с сетевым хостом.
+* Нет автономной поддержки: если соединение с клиентом пропадает, приложение перестает работать.
+* Масштабируемость: сервер должен управлять несколькими клиентскими соединениями и управлять состоянием клиента.

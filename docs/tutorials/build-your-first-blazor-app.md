@@ -473,7 +473,7 @@ uid: client-side/blazor/tutorials/first-app
 >
 > Развертывание создается в */bin/Release/\<target-framework>/publish* каталоге. Переместите контент из каталога *publish* на сервер или сервис хостинга.
 >
-> Больше информации здесь [Хостинг и развёртывание](xref:client-side/blazor/host-and-deploy/index#publish-the-app).
+> Больше информации здесь [Хостинг и развёртывание](xref:client-side/blazor/host-and-deploy/index#публикация-приложения).
 
 ## Дополнительные ресурсы
 

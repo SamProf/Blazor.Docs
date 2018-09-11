@@ -13,7 +13,7 @@ uid: client-side/blazor/host-and-deploy/index
 ---
 # Размещение и развертывание Blazor
 
-By [Luke Latham](https://github.com/guardrex), [Rainer Stropek](https://www.timecockpit.com) и [Daniel Roth](https://github.com/danroth27)
+От [Luke Latham](https://github.com/guardrex), [Rainer Stropek](https://www.timecockpit.com) и [Daniel Roth](https://github.com/danroth27)
 
 [!INCLUDE[](~/includes/blazor-preview-notice.md)]
 
@@ -59,8 +59,8 @@ dotnet publish -c Release
 
 Существуют две модели развертывания для приложений Blazor:
 
-* [Hosted deployment with ASP.NET Core](#hosted-deployment-with-aspnet-core) &ndash; Развертывание использует приложение ASP.NET Core на сервере для размещения приложения Blazor.
-* [Standalone deployment](#standalone-deployment) &ndash; Автономное развертывание размещает приложение Blazor на статичном веб-сервере или службе, где .NET не используется для обслуживания приложения Blazor.
+* [Развёртывание с помощью ASP.NET Core](#развертывание-с-помощью-aspnet-core) &ndash; Развертывание использует приложение ASP.NET Core на сервере для размещения приложения Blazor.
+* [Автономное развёртывание](#автономное-развертывание) &ndash; Автономное развертывание размещает приложение Blazor на статичном веб-сервере или службе, где .NET не используется для обслуживания приложения Blazor.
 
 ### Развертывание с помощью ASP.NET Core
 
