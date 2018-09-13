@@ -29,6 +29,10 @@ dotnet publish -c Release
 
 Содержимое в каталоге *publish* развертываются на веб-сервере. Развертывание может быть ручным или автоматизированным процессом в зависимости от используемых инструментов разработки.
 
+## Configure the Linker
+
+Blazor performs Intermediate Language (IL) linking on each build to remove unnecessary IL from the output assemblies. You can control assembly linking on build. For more information, see <xref:client-side/blazor/host-and-deploy/configure-linker>.
+
 ## Переписать URL-адреса для правильной маршрутизации
 
 Запросы маршрутизации для компонентов страницы в клиентском приложении не так просты, как запросы на маршрутизацию на серверное, размещенное приложение. Рассмотрим клиентское приложение с двумя страницами:

@@ -9,4 +9,5 @@
 # [Отладка](xref:client-side/blazor/debugging)
 # [Размещение и развертывание](xref:client-side/blazor/host-and-deploy/index)
 ## [Модели хостинга](xref:client-side/blazor/host-and-deploy/hosting-models)
+## [Настроить компоновщик](xref:client-side/blazor/host-and-deploy/configure-linker)
 # [FAQ](xref:client-side/blazor/introduction/faq)

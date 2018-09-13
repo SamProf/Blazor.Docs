@@ -306,7 +306,7 @@ uid: client-side/blazor/tutorials/first-app
         }
     </ul>
 
-    <input class placeholder="Something todo" />
+    <input placeholder="Something todo" />
     <button>Add todo</button>
 
     @functions {
