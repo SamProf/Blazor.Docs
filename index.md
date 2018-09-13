@@ -5,7 +5,7 @@ documentType: index
 ---
 <div class="container-fluid update-banner">
 	<div class="container">
-		LinkedIn Learning has unlocked the training course <a href="https://www.linkedin.com/learning/blazor-first-look?trk=insiders_blazorFL_learning" aria-label="Watch Blazor First Look">Blazor First Look</a> for a limited time. 
+		LinkedIn Learning разблокировал учебный курс <a href="https://www.linkedin.com/learning/blazor-first-look?trk=insiders_blazorFL_learning" aria-label="Watch Blazor First Look">Blazor First Look</a> в течение ограниченного времени.. 
 	</div>
 </div>
 <div class="hero">
