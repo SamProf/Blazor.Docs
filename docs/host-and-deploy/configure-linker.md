@@ -1,7 +1,7 @@
 ---
-title: Configure the Linker
+title: Настройка компоновщика
 author: guardrex
-description: Learn how to control the Intermediate Language (IL) Linker when building a Blazor app.
+description: Узнайте, как управлять компоновщиком промежуточного языка (IL) при создании приложения Blazor.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -11,22 +11,22 @@ ms.technology: aspnet
 ms.topic: article
 uid: client-side/blazor/host-and-deploy/configure-linker
 ---
-# Configure the Linker
+# Настройка компоновщика
 
-By [Luke Latham](https://github.com/guardrex)
+От [Luke Latham](https://github.com/guardrex)
 
 [!INCLUDE[](~/includes/blazor-preview-notice.md)]
 
-Blazor performs [Intermediate Language (IL)](https://docs.microsoft.com/dotnet/standard/managed-code#intermediate-language--execution) linking during each Release mode build to remove unnecessary IL from the output assemblies.
+Blazor выполняет [Intermediate Language (IL)](https://docs.microsoft.com/dotnet/standard/managed-code#intermediate-language--execution) связывание во время каждой релизной сборки, чтобы удалить ненужный IL из выходных сборок.
 
-You can control assembly linking with either of the following approaches:
+Вы можете контролировать сборку ссылок с помощью одного из следующих подходов:
 
-* Disable linking globally with an MSBuild property.
-* Control linking on a per-assembly basis with a configuration file.
+* Отключить глобальную привязку с помощью свойства MSBuild.
+* Управление привязкой для каждой сборки в конфигурационном файле.
 
-## Disable linking with an MSBuild property
+## Отключить привязку к свойству MSBuild
 
-Linking is enabled by default in Release mode when an app is built, which includes publishing. To disable linking for all assemblies, set the `<BlazorLinkOnBuild>` MSBuild property to `false` in the project file:
+Связывание включено по умолчанию в режиме Release при создании приложения, которое включает публикацию. Чтобы отключить привязку для всех сборок, в файле проекта установите свойство `<BlazorLinkOnBuild>` как `false`:
 
 ```xml
 <PropertyGroup>
@@ -34,11 +34,11 @@ Linking is enabled by default in Release mode when an app is built, which includ
 </PropertyGroup>
 ```
 
-## Control linking with a configuration file
+## Управление связыванием в конфигурационном файле
 
-Linking can be controlled on a per-assembly basis by providing an XML configuration file and specifying the file as an MSBuild item in the project file.
+Связывание можно контролировать на основе сборки, предоставляя файл конфигурации XML и указывая файл как элемент MSBuild в файле проекта.
 
-The following is an example configuration file (*Linker.xml*):
+Ниже приведен пример файла конфигурации (*Linker.xml*):
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -70,9 +70,9 @@ The following is an example configuration file (*Linker.xml*):
 </linker>
 ```
 
-To learn more about the file format for the configuration file, see [IL Linker: Syntax of xml descriptor](https://github.com/mono/linker/blob/master/linker/README.md#syntax-of-xml-descriptor).
+Чтобы узнать больше о формате файла для конфигурации, смотрите [IL Linker: Syntax of xml descriptor](https://github.com/mono/linker/blob/master/linker/README.md#syntax-of-xml-descriptor).
 
-Specify the configuration file in the project file with the `BlazorLinkerDescriptor` item:
+Укажите файл конфигурации в файле проекта с помощью `BlazorLinkerDescriptor`:
 
 ```xml
 <ItemGroup>
