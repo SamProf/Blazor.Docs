@@ -17,7 +17,7 @@ uid: client-side/blazor/get-started
 
 ## Установка
 
-1. Установите [.NET Core 2.1 SDK](https://go.microsoft.com/fwlink/?linkid=873092) (2.1.300 или новее).
+1. Установите [.NET Core 2.1 SDK (2.1.302)](https://go.microsoft.com/fwlink/?linkid=873092).
 1. Установите [Visual Studio 2017](https://go.microsoft.com/fwlink/?linkid=873093) (15.7 или новее) с *ASP.NET and web development*.
 1. Установите последнюю версию [Blazor Language Services extension](https://go.microsoft.com/fwlink/?linkid=870389) из Visual Studio Marketplace.
 
@@ -43,6 +43,9 @@ dotnet run
 Поздравляем! Вы запустили ваше первое Blazor приложение!
 
 ![Домашняя страница приложения Blazor](https://msdnshared.blob.core.windows.net/media/2018/04/blazor-bootstrap-4.png)
+
+> [!IMPORTANT]
+> The default *global.json* file included in the Blazor project templates may cause the project to fail to load or run if you don't have version 2.1.3xx of the .NET Core SDK installed. The *global.json* file pins the project to 2.1.3xx; so if you don't have that specific version range installed, the project fails to load or run even if you have a newer SDK installed. The workaround is to remove the *global.json* file from the project or install version [2.1.302 of the .NET Core SDK](https://github.com/dotnet/core/blob/master/release-notes/2.1/2.1.2.md).
 
 ## Помощь и обратная связь
 
