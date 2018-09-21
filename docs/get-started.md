@@ -45,7 +45,7 @@ dotnet run
 ![Домашняя страница приложения Blazor](https://msdnshared.blob.core.windows.net/media/2018/04/blazor-bootstrap-4.png)
 
 > [!IMPORTANT]
-> The default *global.json* file included in the Blazor project templates may cause the project to fail to load or run if you don't have version 2.1.3xx of the .NET Core SDK installed. The *global.json* file pins the project to 2.1.3xx; so if you don't have that specific version range installed, the project fails to load or run even if you have a newer SDK installed. The workaround is to remove the *global.json* file from the project or install version [2.1.302 of the .NET Core SDK](https://github.com/dotnet/core/blob/master/release-notes/2.1/2.1.2.md).
+> Файл *global.json* по умолчанию включенный в шаблоны проекта Blazor, может привести к тому, что проект не будет загружен или запущен, если у вас не установлена версия 2.1.3xx .NET Core SDK. Файл *global.json* привязывает проект к 2.1.3xx версии SDK; поэтому, если у вас нет определенного диапазона версий, проект не загружается и не запускается, даже если у вас установлен новый SDK. Обходной путь - удалить файл *global.json* из проекта или установить версию [2.1.302 .NET Core SDK](https://github.com/dotnet/core/blob/master/release-notes/2.1/2.1.2.md).
 
 ## Помощь и обратная связь
 
