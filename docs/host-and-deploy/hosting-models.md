@@ -57,9 +57,9 @@ Blazor - это веб-инфраструктура на стороне клие
 > </handlers>
 > ```
 >
-> Set the app base path in the Blazor app's *index.html* file to the IIS alias used when configuring the sub-app in IIS. For more information, see [App base path](xref:client-side/blazor/host-and-deploy/index#app-base-path).
+> Set the app base path in the Blazor app's *index.html* file to the IIS alias used when configuring the sub-app in IIS. For more information, see [App base path](xref:client-side/blazor/host-and-deploy/index#базовый-путь-приложения).
 
-## Серверный хостинг модель
+## Серверная хостинг модель
 
 В серверной модели хостинга Blazor выполняется на сервере из приложения ASP.NET Core. Обновления пользовательского интерфейса, обработка событий и вызовы JavaScript обрабатываются через соединение SignalR.
 

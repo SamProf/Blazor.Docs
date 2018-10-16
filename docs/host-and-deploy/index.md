@@ -72,7 +72,7 @@ The app responds locally at `http://localhost:port/CoolBlazorApp`.
 For more information, see the [path base host configuration value](#path-base) section.
 
 > [!IMPORTANT]
-> If a Blazor app uses the [client-side hosting model](xref:client-side/blazor/host-and-deploy/hosting-models#client-side-hosting-model) (based on the **Blazor** project template) and is hosted as an IIS sub-application in an ASP.NET Core app, it's important to disable the inherited ASP.NET Core Module handler. Remove the handler in the Blazor app's published *web.config* file by adding a `<handlers>` section to the file:
+> If a Blazor app uses the [client-side hosting model](xref:client-side/blazor/host-and-deploy/hosting-models#клиентская-внутрипроцессная-модель-хостинга) (based on the **Blazor** project template) and is hosted as an IIS sub-application in an ASP.NET Core app, it's important to disable the inherited ASP.NET Core Module handler. Remove the handler in the Blazor app's published *web.config* file by adding a `<handlers>` section to the file:
 >
 > ```xml
 > <handlers>
@@ -84,9 +84,7 @@ For more information, see the [path base host configuration value](#path-base) s
 
 ## Host configuration values
 
-Blazor apps that use the [server-side hosting model](xref:client-side/blazor/host-and-deploy/hosting-models#server-side-hosting-model) can accept [Web Host configuration values](https://docs.microsoft.com/aspnet/core/fundamentals/host/web-host#host-configuration-values).
-
-Blazor apps that use the [client-side hosting model](xref:client-side/blazor/host-and-deploy/hosting-models#client-side-hosting-model) can accept the following host configuration values as command-line arguments at runtime in the development environment.
+Blazor apps that use the [server-side hosting model](xref:client-side/blazor/host-and-deploy/hosting-models#серверная-хостинг-модель) can accept [Web Host configuration values](https://docs.microsoft.com/aspnet/core/fundamentals/host/web-host#host-configuration-values).
 
 ### Content Root
 
@@ -110,7 +108,7 @@ The `--contentroot` argument sets the absolute path to the directory that contai
 
 ### Path base
 
-The `--pathbase` argument sets the app base path for an app run locally with a non-root virtual path (the `<base>` tag `href` is set to a path other than `/` for staging and production). For more information, see the [App base path](#app-base-path) section.
+The `--pathbase` argument sets the app base path for an app run locally with a non-root virtual path (the `<base>` tag `href` is set to a path other than `/` for staging and production). For more information, see the [App base path](#базовый-путь-приложения) section.
 
 > [!IMPORTANT]
 > Unlike the path provided to `href` of the `<base>` tag, don't include a trailing slash (`/`) when passing the `--pathbase` argument value. If the app base path is provided in the `<base>` tag as `<base href="/CoolBlazorApp/" />` (includes a trailing slash), pass the command-line argument value as `--pathbase=/CoolBlazorApp` (no trailing slash).
