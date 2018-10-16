@@ -37,6 +37,9 @@ uid: client-side/blazor/routing
 
 [!code-cshtml[](common/samples/2.x/BlazorSample/Pages/BlazorRoute.cshtml?start=1&end=4)]
 
+> [!IMPORTANT]
+> To generate routes properly, the app must include a `<base>` tag in its *wwwroot/index.html* file with the app base path specified in the `href` attribute (`<base href="/" />`). For more information, see [Host and deploy: App base path](xref:client-side/blazor/host-and-deploy/index#app-base-path).
+
 ## Параметры маршрута
 
 Клиентский маршрутизатор Blazor использует параметры маршрута для заполнения соответствующих параметров компонента с тем же именем (без учета регистра).
@@ -46,6 +49,42 @@ uid: client-side/blazor/routing
 [!code-cshtml[](common/samples/2.x/BlazorSample/Pages/RouteParameter.cshtml?start=1&end=8)]
 
 Дополнительные параметры пока не поддерживаются, поэтому в приведенном выше примере применяются две директивы `@page`. Первая разрешает навигацию к компоненту без параметра. Вторая директива `@page` принимает параметр `{text}` в маршруте и присваивает значение свойству `Text`.
+
+## Route constraints
+
+A route constraint enforces type matching on a route segment to a Blazor component.
+
+In the following example, the route to the Users component only matches if:
+
+* An `Id` route segment is present on the request URL.
+* The `Id` segment is an integer (`int`).
+
+```cshtml
+@page "/Users/{Id:int}"
+
+<h1>The user Id is @Id!</h1>
+
+@functions {
+    [Parameter]
+    private int Id { get; set; }
+}
+```
+
+The route constraints shown in the following table are available for use. For the route constraints that match with the invariant culture, see the warning below the table for more information.
+
+| Constraint | Example           | Example Matches                                                                  | Invariant<br>culture<br>matching |
+| ---------- | ----------------- | -------------------------------------------------------------------------------- | :------------------------------: |
+| `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | No                               |
+| `datetime` | `{dob:datetime}`  | `2016-12-31`, `2016-12-31 7:32pm`                                                | Yes                              |
+| `decimal`  | `{price:decimal}` | `49.99`, `-1,000.01`                                                             | Yes                              |
+| `double`   | `{weight:double}` | `1.234`, `-1,001.01e8`                                                           | Yes                              |
+| `float`    | `{weight:float}`  | `1.234`, `-1,001.01e8`                                                           | Yes                              |
+| `guid`     | `{id:guid}`       | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | No                               |
+| `int`      | `{id:int}`        | `123456789`, `-123456789`                                                        | Yes                              |
+| `long`     | `{ticks:long}`    | `123456789`, `-123456789`                                                        | Yes                              |
+
+> [!WARNING]
+> Route constraints that verify the URL and are converted to a CLR type (such as `int` or `DateTime`) always use the invariant culture. These constraints assume that the URL is non-localizable.
 
 ## Компонент NavLink
 

@@ -20,6 +20,11 @@ uid: client-side/blazor/get-started
 1. Установите [.NET Core 2.1 SDK (2.1.302)](https://go.microsoft.com/fwlink/?linkid=873092).
 1. Установите [Visual Studio 2017](https://go.microsoft.com/fwlink/?linkid=873093) (15.7 или новее) с *ASP.NET and web development*.
 1. Установите последнюю версию [Blazor Language Services extension](https://go.microsoft.com/fwlink/?linkid=870389) из Visual Studio Marketplace.
+1. The Blazor templates on the command-line:
+
+   ```console
+   dotnet new -i Microsoft.AspNetCore.Blazor.Templates
+   ```
 
 Чтобы создать свой первый проект используя Visual Studio:
 
@@ -34,7 +39,6 @@ uid: client-side/blazor/get-started
 Вы также можете установить и использовать шаблоны Blazor из командной строки:
 
 ```console
-dotnet new -i Microsoft.AspNetCore.Blazor.Templates
 dotnet new blazor -o BlazorApp1
 cd BlazorApp1
 dotnet run

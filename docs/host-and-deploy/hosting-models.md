@@ -45,6 +45,20 @@ Blazor - это веб-инфраструктура на стороне клие
 * Увеличенное время загрузки и время загрузки приложения
 * Менее зрелая среда выполнения .NET и инструментальная поддержка (например, ограничения в поддержке и отладке .NET Standard)
 
+> [!NOTE]
+> Visual Studio includes the **Blazor (ASP.NET Core hosted)** project template for creating a Blazor app that runs on WebAssembly and is hosted on an ASP.NET Core server. The ASP.NET Core app serves the Blazor app to clients but is otherwise a separate process. The client-side Blazor app can interact with the server over the network using Web API calls or SignalR connections.
+
+> [!IMPORTANT]
+> If a client-side Blazor app is served by an ASP.NET Core app hosted as an IIS sub-app, it's important to disable the inherited ASP.NET Core Module handler. Remove the handler in the Blazor app's published *web.config* file by adding a `<handlers>` section to the file:
+>
+> ```xml
+> <handlers>
+>   <remove name="aspNetCore" />
+> </handlers>
+> ```
+>
+> Set the app base path in the Blazor app's *index.html* file to the IIS alias used when configuring the sub-app in IIS. For more information, see [App base path](xref:client-side/blazor/host-and-deploy/index#app-base-path).
+
 ## Серверный хостинг модель
 
 В серверной модели хостинга Blazor выполняется на сервере из приложения ASP.NET Core. Обновления пользовательского интерфейса, обработка событий и вызовы JavaScript обрабатываются через соединение SignalR.
