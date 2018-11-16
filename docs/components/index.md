@@ -222,8 +222,22 @@ Blazor предоставляет функции обработки событи
 }
 ```
 
-Для некоторых событий поддерживаются типы аргументов событий. Если доступ к одному из этих типов событий не требуется, он не требуется в вызове метода.
+Event handlers can also be asynchronous and return a `Task`. There's no need to manually call `StateHasChanged()`. Exceptions are logged when they occur.
 
+```cshtml
+<button class="btn btn-primary" onclick="@UpdateHeading">
+    Update heading
+</button>
+
+@functions {
+    async Task UpdateHeading(UIMouseEventArgs e)
+    {
+        ...
+    }
+}
+```
+
+Для некоторых событий поддерживаются типы аргументов событий. Если доступ к одному из этих типов событий не требуется, он не требуется в вызове метода.
 Список поддерживаемых агрументов событий:
 
 * UIEventArgs
@@ -554,7 +568,7 @@ Otherwise, the type parameter must be explicitly specified using an attribute th
 Render fragments can be defined using Razor template syntax. Razor templates are a way to define a UI snippet and assume the following format:
 
 ```cshtml
-@<tag>...<tag>
+@<tag>...</tag>
 ```
 
 The following example illustrates how to specify `RenderFragment` and `RenderFragment<T>` values.

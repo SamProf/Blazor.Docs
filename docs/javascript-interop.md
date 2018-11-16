@@ -25,34 +25,48 @@ uid: client-side/blazor/javascript-interop
 
 Чтобы вызвать JavaScript из .NET, используйте абстракцию `IJSRuntime`, доступную из `JSRuntime.Current`. Метод `InvokeAsync<T>` на `IJSRuntime` принимает идентификатор функции JavaScript, которую вы хотите вызывать, и любое количество сериализуемых аргументов JSON. Идентификатор функции относится к глобальной области (`window`). Например, если вы хотите вызвать `window.someScope.someFunction`, идентификатором является` someScope.someFunction`. Больше нет необходимости регистрировать функцию до ее вызова. Тип возврата `T` также должен быть сериализуемым JSON.
 
-*exampleJsInterop.js*:
+In the sample app, two JavaScript functions are available to the client-side app that interact with the DOM to receive user input and display a welcome message:
 
-```javascript
-window.exampleJsFunctions = {
-  showPrompt: function (message) {
-    return prompt(message, 'Type anything here');
-  }
-};
-```
+* `showPrompt` &ndash; Produces a prompt to accept user input (the user's name) and returns the name to the caller.
+* `displayWelcome` &ndash; Assigns a welcome message from the caller to a DOM object with an `id` of `welcome`.
 
-*ExampleJsInterop.cs*:
+*wwwroot/exampleJsInterop.js*:
 
-```csharp
-public class ExampleJsInterop
-{
-    public static Task<string> Prompt(string message)
-    {
-        // Implemented in exampleJsInterop.js
-        return JSRuntime.Current.InvokeAsync<string>(
-            "exampleJsFunctions.showPrompt",
-            message);
-    }
-}
-```
+[!code-javascript[](./common/samples/2.x/BlazorSample/wwwroot/exampleJsInterop.js?highlight=2-7)]
 
 Абстракция `IJSRuntime` является асинхронной, позволяющей использовать сценарии вне процесса. Если приложение запускается в процессе и вы хотите синхронно вызывать функцию JavaScript, отключите их до `IJSInProcessRuntime` и вызовите `Invoke<T>` вместо этого. Мы рекомендуем использовать асинхронные API для обеспечения доступности библиотек во всех сценариях Blazor, на стороне клиента или на стороне сервера.
 
-## Захват ссылок на элементы
+[!code-html[](./common/samples/2.x/BlazorSample/wwwroot/index.html?highlight=16)]
+
+Don't place a script tag in a component file because the script tag can't be updated dynamically.
+
+.NET methods interop with the JavaScript functions by calling `InvokeAsync<T>` method on `IJSRuntime`.
+
+The sample app uses a pair of C# methods, `Prompt` and `Display`, to invoke the `showPrompt` and `displayWelcome` JavaScript functions:
+
+*JsInteropClasses/ExampleJsInterop.cs*:
+
+[!code-csharp[](./common/samples/2.x/BlazorSample/JsInteropClasses/ExampleJsInterop.cs?name=snippet1&highlight=6-8,14-16)]
+
+The `IJSRuntime` abstraction is asynchronous to allow for server-side scenarios. If the app runs client-side and you want to invoke a JavaScript function synchronously, downcast to `IJSInProcessRuntime` and call `Invoke<T>` instead. We recommend that most JavaScript interop libraries use the async APIs to ensure the libraries are available in all Blazor scenarios, client-side or server-side.
+
+The sample app includes a component to demonstrate JS interop. The component:
+
+* Receives user input via a JS prompt.
+* Returns the text to the component for processing.
+* Calls a second JS function that interacts with the DOM to display a welcome message.
+
+*Pages/JSInterop.cshtml*:
+
+[!code-cshtml[](./common/samples/2.x/BlazorSample/Pages/JsInterop.cshtml?start=1&end=21&highlight=2-3,9-11,13,16-20)]
+
+1. When `TriggerJsPrompt` is executed by selecting the component's **Trigger JavaScript Prompt** button, the `ExampleJsInterop.Prompt` method in C# code is called.
+1. The `Prompt` method executes the JavaScript `showPrompt` function provided in the *wwwroot/exampleJsInterop.js* file.
+1. The `showPrompt` function accepts user input (the user's name), which is HTML-encoded and returned to the `Prompt` method and ultimately back to the component. The component stores the user's name in a local variable, `name`.
+1. The string stored in `name` is incorporated into a welcome message, which is passed to a second C# method, `ExampleJsInterop.Display`.
+1. `Display` calls a JavaScript function, `displayWelcome`, which renders the welcome message into a heading tag.
+
+## Capture references to elements
 
 Некоторые сценарии [взаимодействия с JavaScript](xref:client-side/blazor/javascript-interop) требуют ссылки на элементы HTML. Например, для библиотеки UI может потребоваться ссылка на элемент для инициализации, или вам может потребоваться вызвать командные API-интерфейсы для элемента, такие как `focus` или `play`.
 
@@ -127,74 +141,63 @@ namespace MyLib
 
 ## Вызов .NET методов из функций JavaScript
 
+### Static .NET method call
 Для вызова статических .NET методов из JavaScript используются функции `DotNet.invokeMethod` или `DotNet.invokeMethodAsync`. Передайте идентификатор статического метода, который вы хотите вызвать, имя сборки, содержащей функцию, и любые аргументы. Опять же, асинхронная версия предпочтительна для поддержки сценариев вне процесса. Чтобы быть вызываемым из JavaScript, метод .NET должен быть общедоступным, статическим и помеченным `[JSInvokable]`. По умолчанию идентификатор метода - это имя метода, но вы можете указать другой идентификатор, используя конструктор `JSInvokableAttribute`. Вызов открытых общих методов в настоящее время не поддерживается.
 
-*JavaScriptInteroperable.cs*:
+To invoke a static .NET method from JavaScript, use the `DotNet.invokeMethod` or `DotNet.invokeMethodAsync` functions. Pass in the identifier of the static method you wish to call, the name of the assembly containing the function, and any arguments. Again, the async version is preferred to support server-side scenarios. To be invokable from JavaScript, the .NET method must be public, static, and decorated with `[JSInvokable]`. By default, the method identifier is the method name, but you can specify a different identifier using the `JSInvokableAttribute` constructor. Calling open generic methods isn't currently supported.
 
-```csharp
-public class JavaScriptInvokable
-{
-    [JSInvokable]
-    public static Task<int[]> ReturnArrayAsync()
-    {
-        return Task.FromResult(new int[] { 1, 2, 3 });
-    }
-}
+The sample app includes a C# method to return an array of `int`s. The method is decorated with the `JSInvokable` attribute.
+
+*Pages/JsInterop.cshtml*:
+
+[!code-cshtml[](./common/samples/2.x/BlazorSample/Pages/JsInterop.cshtml?start=47&end=58&highlight=7-11)]
+
+JavaScript served to the client invokes the C# .NET method.
+
+*wwwroot/exampleJsInterop.js*:
+
+[!code-javascript[](./common/samples/2.x/BlazorSample/wwwroot/exampleJsInterop.js?highlight=8-12)]
+
+When the **Trigger .NET static method ReturnArrayAsync** button is selected, examine the console output in the browser's web developer tools:
+
+```console
+Array(4) [ 1, 2, 3, 4 ]
 ```
 
-*dotnetInterop.js*:
+The fourth array value is pushed to the array (`data.push(4);`) returned by `ReturnArrayAsync`.
 
-```javascript
-DotNet.invokeMethodAsync(assemblyName, 'ReturnArrayAsync').then(data => ...)
-```
+### Instance method call
 
-Новое в Blazor 0.5.0, вы также можете вызвать методы экземпляра .NET из JavaScript. Чтобы вызвать метод экземпляра .NET из JavaScript, сначала передайте экземпляр .NET на JavaScript, завернув его в экземпляр `DotNetObjectRef`. Экземпляр .NET передается по ссылке на JavaScript, и вы можете вызывать методы экземпляра .NET в экземпляре, используя функции `invokeMethod` или` invokeMethodAsync`. Экземпляр .NET также может быть передан как аргумент при вызове других методов .NET из JavaScript.
+You can also call .NET instance methods from JavaScript. To invoke a .NET instance method from JavaScript, first pass the .NET instance to JavaScript by wrapping it in a `DotNetObjectRef` instance. The .NET instance is passed by reference to JavaScript, and you can invoke .NET instance methods on the instance using the `invokeMethod` or `invokeMethodAsync` functions. The .NET instance can also be passed as an argument when invoking other .NET methods from JavaScript.
 
-*ExampleJsInterop.cs*:
+> [!NOTE]
+> The sample app logs messages to the client-side console. For the following examples demonstrated by the sample app, examine the browser's console output in the browser's developer tools.
 
-```csharp
-public class ExampleJsInterop
-{
-    public static Task SayHello(string name)
-    {
-        return JSRuntime.Current.InvokeAsync<object>(
-            "exampleJsFunctions.sayHello", 
-            new DotNetObjectRef(new HelloHelper(name)));
-    }
-}
-```
+When the **Trigger .NET instance method HelloHelper.SayHello** button is selected, `ExampleJsInterop.CallHelloHelperSayHello` is called and passes a name, `Blazor`, to the method.
 
-*exampleJsInterop.js*:
+*Pages/JsInterop.cshtml*:
 
-```javascript
-window.exampleJsFunctions = {
-  sayHello: function (dotnetHelper) {
-    return dotnetHelper.invokeMethodAsync('SayHello')
-      .then(r => console.log(r));
-  }
-};
-```
+[!code-cshtml[](./common/samples/2.x/BlazorSample/Pages/JsInterop.cshtml?start=60&end=69&highlight=8)]
 
-*HelloHelper.cs*:
+`CallHelloHelperSayHello` invokes the JavaScript function `sayHello` with a new instance of `HelloHelper`.
 
-```csharp
-public class HelloHelper
-{
-    public HelloHelper(string name)
-    {
-        Name = name;
-    }
+*JsInteropClasses/ExampleJsInterop.cs*:
 
-    public string Name { get; set; }
+[!code-csharp[](./common/samples/2.x/BlazorSample/JsInteropClasses/ExampleJsInterop.cs?name=snippet1&highlight=19-25)]
 
-    [JSInvokable]
-    public string SayHello() => $"Hello, {Name}!";
-}
-```
+*wwwroot/exampleJsInterop.js*:
 
-*Output*:
+[!code-javascript[](./common/samples/2.x/BlazorSample/wwwroot/exampleJsInterop.js?highlight=15-17)]
 
-```
+The name is passed to `HelloHelper`'s constructor, which sets the `HelloHelper.Name` property. When the JavaScript function `sayHello` is executed, `HelloHelper.SayHello` returns the `Hello, {Name}!` message, which is written to the console by the JavaScript function.
+
+*JsInteropClasses/HelloHelper.cs*:
+
+[!code-csharp[](./common/samples/2.x/BlazorSample/JsInteropClasses/HelloHelper.cs?name=snippet1&highlight=5,10-11)]
+
+Console output in the browser's web developer tools:
+
+```console
 Hello, Blazor!
 ```
 

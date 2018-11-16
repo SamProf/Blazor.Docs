@@ -55,4 +55,10 @@ Blazor предоставляет прокси-сервер отладки, ко
 * Перейдить по асинхронным вызовам.
 * Выполнять большинство других обычных сценариев отладки.
 
-Разработка дальнейших сценариев отладки - это постоянный фокус инженерной команды.
+Development of further debugging scenarios is an on-going focus of the engineering team.
+
+## Troubleshooting tip
+
+If you're running into errors, the following tip may help:
+
+In the **debugger** tab, open the developer tools in your browser. In the console, execute `localStorage.clear()` to remove any breakpoints.
