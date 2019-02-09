@@ -3,11 +3,7 @@ title: Добро пожаловать на сайт документации Bl
 description: Узнайте о Blazor, экспериментальной платформе .NET с использованием C#/Razor и HTML, которая работает в браузере с помощью WebAssembly.
 documentType: index
 ---
-<div class="container-fluid update-banner">
-	<div class="container">
-		LinkedIn Learning разблокировал учебный курс <a href="https://www.linkedin.com/learning/blazor-first-look?trk=insiders_blazorFL_learning" aria-label="Watch Blazor First Look">Blazor First Look</a> в течение ограниченного времени.. 
-	</div>
-</div>
+
 <div class="hero">
   <div class="wrap">
     <h1 class="text">
@@ -17,7 +13,7 @@ documentType: index
         Full stack веб-разработка используя C# и WebAssembly
     </div>
     <div class="buttons-unit">
-      <a href="/docs/get-started.html" class="button"><i class="glyphicon glyphicon-send"></i>Начать</a>
+      <a href="https://docs.microsoft.com/aspnet/core/razor-components/get-started" class="button"><i class="glyphicon glyphicon-send"></i>Начать</a>
     </div>
     <div class="minitext">
         <br />
@@ -33,7 +29,7 @@ documentType: index
         <section>
           <h2>Создайте веб-интерфейсы с помощью C#</h2>
           <p class="lead">Blazor - это экспериментальная платформа .NET с использованием C# и HTML, которая работает в браузере.</p>
-          <div class="lead"><a href="/docs/introduction/faq.html">Что такое Blazor?</a></div>
+          <div class="lead"><a href="https://docs.microsoft.com/aspnet/core/razor-components/faq">Что такое Blazor?</a></div>
         </section>
       </div>
     </div>
@@ -46,7 +42,7 @@ documentType: index
         <section>
           <h2>Full-stack .NET</h2>
           <p class="lead">Full-stack .NET разработка с использованием стабильных и совместимых инструментов, языков и API как в браузере, так и на сервере.</p>
-          <div class="lead"><a href="https://www.microsoft.com/net">Узнайте больше о платформе .NET</a></div>
+          <div class="lead"><a href="https://docs.microsoft.com/aspnet/core/razor-components/faq">Узнайте больше о платформе .NET</a></div>
         </section>
         <i class="glyphicon glyphicon-tasks"></i>
       </div>
@@ -61,7 +57,7 @@ documentType: index
         <section>
           <h2>Работает во всех браузерах и реализует .NET Standard</h2>
           <p class="lead">Blazor запускается во всех браузерах c реальной средой выполнения .NET  с полной поддержкой .NET Standard. Blazor не требует плагинов и не транслирует код, используются только открытые веб-стандарты.</p>
-          <div class="lead"><a href="/docs/introduction/index.html">Как работает Blazor</a></div>
+          <div class="lead"><a href="https://docs.microsoft.com/aspnet/core/razor-components/">Как работает Blazor</a></div>
         </section>
       </div>
     </div>
@@ -141,7 +137,7 @@ documentType: index
   <div class="container">
     <div class="row">
       <div class="buttons-unit" style="padding-bottom:50px">
-        <a href="/docs/get-started.html" class="btn btn-primary" style="font-size:2em;display:inline;padding:15px"><i class="glyphicon glyphicon-send" style="font-size:1em;padding:0 20px 0 0"></i>Начать</a>
+        <a href="https://docs.microsoft.com/aspnet/core/razor-components/get-started" class="btn btn-primary" style="font-size:2em;display:inline;padding:15px"><i class="glyphicon glyphicon-send" style="font-size:1em;padding:0 20px 0 0"></i>Начать</a>
       </div>
     </div>
   </div>
